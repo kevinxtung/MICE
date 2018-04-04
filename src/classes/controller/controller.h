@@ -4,7 +4,9 @@
 
 class Controller {
     public:
-	Controller();
+	Controller() : view(View()) { }
 	void cli();
 	void execute(int cmd);
+    private:
+	View view;
 };
