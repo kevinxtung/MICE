@@ -15,6 +15,7 @@ Create an Item
 (3) Create a topping
 
 )";
+    std::cout << menu << std::endl;
     int choice;
     std::cin >> choice;
     try {
@@ -26,5 +27,5 @@ Create an Item
 }
 
 void View::error(std::string message) {
-    std::cout << message;
+    std::cout << message << std::endl;
 }

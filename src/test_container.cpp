@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     if (cup.isInStock()) {
 	std::cerr << "ERROR: Cup should not be in stock!";
     }
-
-    std::cout << cone.getName() << ": " << cone.getDescription() << std::endl;
-    std::cout << "Profit: " << cone.getRetailPrice() - cone.getRawCost() << std::endl;
+    if (cone.getName() != "Cone") {
+	std::cerr << "ERROR: Cone should be named Cone!";
+    }
 }
