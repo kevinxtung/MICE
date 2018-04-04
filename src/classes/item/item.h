@@ -12,7 +12,7 @@ class Item {
 	int quantity;
 	//Gtk::Image* image; add this to the constructor as well
     public:
-	Item(string name, string description, double rawCost, double retailPrice, int quantity);
+	Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity);
 	//~Item();
 
 	// Getters
