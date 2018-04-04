@@ -1,7 +1,7 @@
 #include <string.h>
 #include "item.h"
 
-Item::Item(string name, string description, double rawCost, double retailPrice, int quantity)
+Item::Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity)
     :	name{name}, description{description}, rawCost{rawCost},
 	retailPrice{retailPrice}, quantity{quantity} {
 }
