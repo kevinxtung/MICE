@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmlns:UML="http://schema.omg.org/spec/UML/1.3" xmi.version="1.2" timestamp="2018-04-05T03:06:02">
+<XMI verified="false" xmlns:UML="http://schema.omg.org/spec/UML/1.3" xmi.version="1.2" timestamp="2018-04-05T04:41:02">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -428,9 +428,39 @@
          </assocwidget>
         </associations>
        </diagram>
-       <diagram isopen="1" showatts="1" canvaswidth="0" griddotcolor="#d3d3d3" linewidth="0" showattribassocs="1" usefillcolor="1" type="3" linecolor="#ff0000" showscope="1" snapcsgrid="0" snapy="25" showopsig="1" autoincrementsequence="0" fillcolor="#ffff00" localid="-1" xmi.id="gOW5uFXnjT41" backgroundcolor="#ffffff" font="Sans Serif,9,-1,5,50,0,0,0,0,0" showpackage="1" showgrid="0" snapx="25" canvasheight="0" documentation="" showattsig="1" snapgrid="0" name="examplesequencediagram" textcolor="#000000" showpubliconly="0" zoom="132" showops="1" showstereotype="1">
-        <widgets/>
-        <messages/>
+       <diagram isopen="1" showatts="1" canvaswidth="1082.85" griddotcolor="#d3d3d3" linewidth="0" showattribassocs="1" usefillcolor="1" type="3" linecolor="#ff0000" showscope="1" snapcsgrid="0" snapy="25" showopsig="1" autoincrementsequence="0" fillcolor="#ffff00" localid="-1" xmi.id="gOW5uFXnjT41" backgroundcolor="#ffffff" font="Sans Serif,9,-1,5,50,0,0,0,0,0" showpackage="1" showgrid="0" snapx="25" canvasheight="548.036" documentation="" showattsig="1" snapgrid="0" name="examplesequencediagram" textcolor="#000000" showpubliconly="0" zoom="86" showops="1" showstereotype="1">
+        <widgets>
+         <objectwidget isinstance="0" linewidth="0" height="25" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="80" decon="0" fillcolor="none" localid="SizZGgT5yZip" xmi.id="A94EMJNEQ3x3" width="63" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-221.212" multipleinstance="0" drawasactor="0" usesdiagramfillcolor="1" textcolor="#000000" showstereotype="1"/>
+         <objectwidget isinstance="0" linewidth="0" height="25" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="80" decon="0" fillcolor="none" localid="71GUnI58i2w8" xmi.id="PW2ITwBF78bK" width="54" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="27.9034" multipleinstance="0" drawasactor="0" usesdiagramfillcolor="1" textcolor="#000000" showstereotype="1"/>
+         <objectwidget isinstance="0" linewidth="0" height="25" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="80" decon="0" fillcolor="none" localid="mhkKnBgDtgm7" xmi.id="rSkg2qoAMcIA" width="92" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="329.878" multipleinstance="0" drawasactor="0" usesdiagramfillcolor="1" textcolor="#000000" showstereotype="1"/>
+         <objectwidget isinstance="0" linewidth="0" height="25" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="80" decon="0" fillcolor="none" localid="KFAIns5urLNf" xmi.id="voL2jVfbFhBF" width="57" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="161.364" multipleinstance="0" drawasactor="0" usesdiagramfillcolor="1" textcolor="#000000" showstereotype="1"/>
+         <objectwidget isinstance="0" linewidth="0" height="25" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="80" decon="0" fillcolor="none" localid="bQlJShPCM7X8" xmi.id="8Yq7nnnhZ8jI" width="76" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-387.121" multipleinstance="0" drawasactor="0" usesdiagramfillcolor="1" textcolor="#000000" showstereotype="1"/>
+         <floatingtext isinstance="0" linewidth="0" height="17" usefillcolor="1" usesdiagramusefillcolor="0" linecolor="#ff0000" y="178.337" fillcolor="#ffff00" localid="JXXN4bGmlHJy" xmi.id="BaeSBg3bAP1o" posttext="" width="86" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-313.593" role="700" text="get x servings" usesdiagramfillcolor="0" textcolor="#000000" pretext="" showstereotype="1"/>
+         <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="0" linecolor="#ff0000" y="221.419" fillcolor="#ffff00" localid="kocW4vu9ZI2Y" xmi.id="g7HAsfKAsVxY" posttext="" width="124" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-325.616" role="700" text="get another serving" usesdiagramfillcolor="0" textcolor="#000000" pretext="" showstereotype="1"/>
+        </widgets>
+        <messages>
+         <messagewidget isinstance="0" widgetbid="SizZGgT5yZip" textid="CZiIksRa4X4v" linewidth="0" height="20" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="203.53" operation="iC3YDtJhHb4d" fillcolor="none" localid="N9kgL3DQ5CA9" xmi.id="iC3YDtJhHb4d" widgetaid="bQlJShPCM7X8" width="168" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="-349" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1000" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="184" fillcolor="none" localid="UNKNMrRizBMK" xmi.id="CZiIksRa4X4v" posttext="" width="147" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="-344" role="704" text="get a serving() : Serving" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+         <messagewidget isinstance="0" widgetbid="71GUnI58i2w8" textid="hv1yepIzsO3B" linewidth="0" height="8" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="219.07" operation="create an order from servings" fillcolor="none" localid="4jeH9mGSJlnL" xmi.id="K366LP2Wxew8" widgetaid="SizZGgT5yZip" width="241" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="-188" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1001" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="200" fillcolor="none" localid="LxjVKiJPRvgb" xmi.id="hv1yepIzsO3B" posttext="" width="182" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="-158" role="704" text="create an order from servings" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+         <messagewidget isinstance="0" widgetbid="71GUnI58i2w8" textid="KCDpihewVrZD" linewidth="0" height="10" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" xclicked="103" y="306.131" operation="cancel order" fillcolor="none" localid="l3fiiZo3XVWr" xmi.id="EoEfjtEPmGLQ" widgetaid="71GUnI58i2w8" width="54" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="54" yclicked="237" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1003" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="287" fillcolor="none" localid="5dNvzQ7kUkQA" xmi.id="KCDpihewVrZD" posttext="" width="81" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="59" role="705" text="cancel order" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+         <messagewidget isinstance="0" widgetbid="bQlJShPCM7X8" textid="C5G2UuvrRwjE" linewidth="0" height="10" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" xclicked="-425" y="300.684" operation="customer chooses to creatae a serving" fillcolor="none" localid="BbUeS3rArRet" xmi.id="NZ2up3QVAfe2" widgetaid="bQlJShPCM7X8" width="81" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="-430" yclicked="190" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1004" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="281" fillcolor="none" localid="JwABQ7jbhBF7" xmi.id="C5G2UuvrRwjE" posttext="" width="233" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="-425" role="705" text="customer chooses to creatae a serving" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+         <messagewidget isinstance="0" widgetbid="KFAIns5urLNf" textid="II5qPbS5y7X0" linewidth="0" height="8" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="211" operation="process order" fillcolor="none" localid="eA7CYNFpY9We" xmi.id="iPgS2qvz8UAh" widgetaid="71GUnI58i2w8" width="133" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="55" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1001" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="192" fillcolor="none" localid="J4d3Cdsqlx3H" xmi.id="II5qPbS5y7X0" posttext="" width="89" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="60" role="704" text="process order" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+         <messagewidget isinstance="0" widgetbid="mhkKnBgDtgm7" textid="SLZuQii4Gcgw" linewidth="0" height="8" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="195" operation="tGoO5TaQ6Ikl" fillcolor="none" localid="x5Ai2B0KT59q" xmi.id="tGoO5TaQ6Ikl" widgetaid="KFAIns5urLNf" width="184" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="190" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1001" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="176" fillcolor="none" localid="cLxmhD6fGHLH" xmi.id="SLZuQii4Gcgw" posttext="" width="59" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="195" role="704" text="update()" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+         <messagewidget isinstance="0" widgetbid="mhkKnBgDtgm7" textid="McuqD3zwEjyg" linewidth="0" height="10" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" xclicked="457" y="205" operation="order closed" fillcolor="none" localid="4GWul8dOTa89" xmi.id="lDm2S7JuTsmr" widgetaid="mhkKnBgDtgm7" width="87" font="Ubuntu,11,-1,5,50,0,0,0,0,0" seqnum="" x="375" yclicked="205" usesdiagramfillcolor="1" textcolor="none" sequencemessagetype="1003" showstereotype="1">
+          <floatingtext isinstance="0" linewidth="0" height="19" usefillcolor="1" usesdiagramusefillcolor="1" linecolor="#ff0000" y="186" fillcolor="none" localid="ZTup5Yj7pGzY" xmi.id="McuqD3zwEjyg" posttext="" width="82" font="Ubuntu,11,-1,5,50,0,0,0,0,0" x="380" role="705" text="order closed" usesdiagramfillcolor="1" textcolor="none" pretext="" showstereotype="1"/>
+         </messagewidget>
+        </messages>
         <associations/>
        </diagram>
       </diagrams>
@@ -821,7 +851,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings viewid="8ycQIJmaA66v" documentation="" uniqueid="pK6fraJRNo2a"/>
+  <docsettings viewid="gOW5uFXnjT41" documentation="" uniqueid="McuqD3zwEjyg"/>
   <listview>
    <listitem type="800" open="1" id="Views">
     <listitem type="821" open="1" id="Component View"/>

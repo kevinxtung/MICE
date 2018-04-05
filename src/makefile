@@ -23,7 +23,7 @@ scoop.o: ./classes/scoop/scoop.cpp ./classes/scoop/scoop.h
 test: test.o container.o item.o
 	$(FFLAGS) -o test test.o container.o item.o $(GTKFLAGS)
 test.o: test.cpp
-	$(FFLAGS) -c -w test_container.cpp $(GTKFLAGS)
+	$(FFLAGS) -c -w test.cpp $(GTKFLAGS)
 container.o: ./classes/container/container.cpp ./classes/container/container.h
 	$(FFLAGS) -c ./classes/container/container.cpp $(GTKFLAGS)
 
