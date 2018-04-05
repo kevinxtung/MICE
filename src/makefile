@@ -4,17 +4,18 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o controller.o view.o item.o scoop.o container.o topping.o
-	$(FFLAGS) -o enviro controller.o view.o main.o item.o scoop.o container.o topping.o $(GTKFLAGS)
+main: main.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
+	$(FFLAGS) -o enviro main.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 controller.o: ./classes/controller/controller.cpp ./classes/controller/controller.h
 	$(FFLAGS) -c ./classes/controller/controller.cpp $(GTKFLAGS)
 view.o: ./classes/view/view.cpp ./classes/view/view.h
 	$(FFLAGS) -c ./classes/view/view.cpp $(GTKFLAGS)
+emporium.o: ./classes/emporium/emporium.cpp ./classes/emporium/emporium.h
+	$(FFLAGS) -c ./classes/emporium/emporium.cpp $(GTKFLAGS)
 item.o: ./classes/item/item.cpp ./classes/item/item.h
 	$(FFLAGS) -c ./classes/item/item.cpp $(GTKFLAGS)
-
 scoop.o: ./classes/scoop/scoop.cpp ./classes/scoop/scoop.h
 	$(FFLAGS) -c ./classes/scoop/scoop.cpp $(GTKFLAGS)
 

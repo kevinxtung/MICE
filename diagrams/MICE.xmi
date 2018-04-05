@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmlns:UML="http://schema.omg.org/spec/UML/1.3" xmi.version="1.2" timestamp="2018-04-05T03:01:01">
+<XMI verified="false" xmlns:UML="http://schema.omg.org/spec/UML/1.3" xmi.version="1.2" timestamp="2018-04-05T03:06:02">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -624,7 +624,7 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams>
-       <diagram isopen="1" showatts="1" canvaswidth="1102.35" griddotcolor="#d3d3d3" linewidth="0" showattribassocs="1" usefillcolor="1" type="2" linecolor="#ff0000" showscope="1" snapcsgrid="0" snapy="25" showopsig="1" fillcolor="#ffff00" localid="-1" xmi.id="lZOkG3GIfU8Q" backgroundcolor="#ffffff" font="Sans Serif,9,-1,5,50,0,0,0,0,0" showpackage="1" showgrid="0" snapx="25" canvasheight="876.87" documentation="" showattsig="1" snapgrid="0" name="MICE_Use_Case" textcolor="#000000" showpubliconly="0" zoom="53" showops="1" showstereotype="1">
+       <diagram isopen="1" showatts="1" canvaswidth="1102.35" griddotcolor="#d3d3d3" linewidth="0" showattribassocs="1" usefillcolor="1" type="2" linecolor="#ff0000" showscope="1" snapcsgrid="0" snapy="25" showopsig="1" fillcolor="#ffff00" localid="-1" xmi.id="lZOkG3GIfU8Q" backgroundcolor="#ffffff" font="Sans Serif,9,-1,5,50,0,0,0,0,0" showpackage="1" showgrid="0" snapx="25" canvasheight="876.87" documentation="" showattsig="1" snapgrid="0" name="MICE_Use_Case" textcolor="#000000" showpubliconly="0" zoom="40" showops="1" showstereotype="1">
         <widgets>
          <actorwidget width="67" height="67" font="Sans Serif,9,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" fillcolor="#ffff00" x="-562.127" isinstance="0" linecolor="#ff0000" linewidth="0" y="-379.859" usefillcolor="1" xmi.id="qbJT3Rr6H8lh" showstereotype="1" localid="p8aYlnXMqA6h" textcolor="#000000" usesdiagramfillcolor="0"/>
          <actorwidget width="62" height="62" font="Sans Serif,9,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" fillcolor="#ffff00" x="-821.602" isinstance="0" linecolor="#ff0000" linewidth="0" y="94.8583" usefillcolor="1" xmi.id="NUI7Hb75AQWB" showstereotype="1" localid="qOF7U1nH9Nps" textcolor="#000000" usesdiagramfillcolor="0"/>
