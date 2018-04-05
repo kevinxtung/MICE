@@ -32,4 +32,4 @@ topping.o: ./classes/topping/topping.cpp ./classes/topping/topping.h
 
 
 clean:
-	-rm -f *.o enviro test_container
+	-rm -f *.o enviro test
