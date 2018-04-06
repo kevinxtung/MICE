@@ -23,5 +23,5 @@ GUI_Window::~GUI_Window() { }
 // Callbacks
 
 void GUI_Window::on_button0_click() {
-    controller->execute_cmd(1);
+    m_controller->execute(1);
 }

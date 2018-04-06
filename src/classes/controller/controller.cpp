@@ -38,7 +38,7 @@ void Controller::execute(int cmd) {
 	    int maxScoops;
 	    std::cout << "Max scoops? " << std::endl;
 	    std::cin >> maxScoops;
-	    emporium.addContainer(Container(name, description, rawCost, retailPrice, quantity, maxScoops));
+	    //emporium.addItem(Item(name, description, rawCost, retailPrice, quantity, maxScoops));
 	    break;
 	    }
 	case 3:	    // Create topping
@@ -46,7 +46,7 @@ void Controller::execute(int cmd) {
 	    std::string load;
 	    std::cout << "Amount of topping? " << std::endl;
 	    std::cin >> load;
-	    emporium.addTopping(Topping(name, description, rawCost, retailPrice, quantity, load));
+	    //emporium.addItem(Item(name, description, rawCost, retailPrice, quantity, load));
 	    break;
 	    }
 	default:

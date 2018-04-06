@@ -5,7 +5,7 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 main: main.o gui_window.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
-	$(FFLAGS) -o enviro main.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
+	$(FFLAGS) -o enviro main.o gui_window.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 gui_window.o: ./classes/gui_window/gui_window.cpp ./classes/gui_window/gui_window.h

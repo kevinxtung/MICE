@@ -4,7 +4,7 @@
 #include "classes/emporium/emporium.h"
 #include "classes/controller/controller.h"
 
-class GUI_Window :public Gtk::Window {
+class GUI_Window : public Gtk::Window {
     public:
 	GUI_Window(Controller* controller);
 	virtual ~GUI_Window();
