@@ -1,18 +1,17 @@
 #pragma once
 
-#include "classes/container/container.h"
-#include "classes/topping/topping.h"
-#include "classes/scoop/scoop.h"
+#include "classes/item/item.h"
+//#include "classes/order/order.h"
+//#include "classes/person/person.h"
 
 #include <vector>
 
 class Emporium {
     public:
-	void addScoop(Scoop scoop);
-	void addContainer(Container container);
-	void addTopping(Topping topping);
+	void addItem(Item item);
+	// loading and saving
     private:
-	std::vector<Scoop> scoops;
-	std::vector<Container> containers;
-	std::vector<Topping> toppings;
+	std::vector<Item> m_items;
+	//std::vector<Order> m_orders;
+	//std::vector<Person> m_people;
 };
