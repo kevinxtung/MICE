@@ -16,7 +16,7 @@ class Emporium {
 	// loading and saving
     private:
 	std::vector<Item> m_items;
-	std::vector<Scoop> m_scoop;
+	std::vector<Scoop> m_scoops;
 	//std::vector<Order> m_orders;
 	//std::vector<Person> m_people;
 };
