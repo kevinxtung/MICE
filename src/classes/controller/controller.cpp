@@ -1,4 +1,7 @@
 #include "controller.h"
+#include "classes/topping/topping.h"
+#include "classes/container/container.h"
+#include "classes/scoop/scoop.h"
 #include <string>
 #include <iostream>
 
@@ -101,14 +104,85 @@ void Controller::execute(int cmd) {
 		retailPrice = std::stod(e_retailPrice.get_text());
 		type = c_type.get_active_row_number();
 		switch (type) {
-		    case 0:
-			emporium.addItem(Item(name, description, rawCost, retailPrice));
+		    case 0: {
+			int maxScoops;
+			Gtk::Dialog *dialog = new Gtk::Dialog();
+			dialog->set_title("Enter Max Scoops");
+			
+			Gtk::HBox b_maxScoops;
+			Gtk::Label l_maxScoops{"Max Scoops: "};
+			l_maxScoops.set_width_chars(15);
+			b_maxScoops.pack_start(l_maxScoops, Gtk::PACK_SHRINK);
+
+			Gtk::Entry e_maxScoops;
+			e_maxScoops.set_max_length(2);
+			b_maxScoops.pack_start(e_maxScoops, Gtk::PACK_SHRINK);
+			dialog->get_vbox()->pack_start(b_maxScoops, Gtk::PACK_SHRINK);
+			
+			dialog->add_button("Set", 1);
+			dialog->show_all();
+			int result = dialog->run();
+			dialog->close();
+			while (Gtk::Main::events_pending()) {
+			    Gtk::Main::iteration();
+			}
+			if (result == 1) {
+			    maxScoops = std::stoi(e_maxScoops.get_text());
+			    emporium.addItem(Container(name, description, rawCost, retailPrice, maxScoops));
+			}
 			break;
+		    }
 		    case 1:
-			emporium.addItem(Item(name, description, rawCost, retailPrice));
+			emporium.addItem(Scoop(name, description, rawCost, retailPrice));
 			break;
-		    case 2:
-			emporium.addItem(Item(name, description, rawCost, retailPrice));
+		    case 2: {
+			int intAmount;
+			std::string amount;
+			Gtk::Dialog *dialog = new Gtk::Dialog();
+			dialog->set_title("Choose Topping Amount");
+			
+			Gtk::HBox b_amount;
+			Gtk::Label l_amount{"Amount: "};
+			l_amount.set_width_chars(15);
+			b_amount.pack_start(l_amount, Gtk::PACK_SHRINK);
+
+			Gtk::ComboBoxText c_amount;
+			c_amount.set_size_request(160);
+			c_amount.append("Light");
+			c_amount.append("Normal");
+			c_amount.append("Extra");
+			c_amount.append("Drenched");
+			b_amount.pack_start(c_amount, Gtk::PACK_SHRINK);
+			dialog->get_vbox()->pack_start(b_amount, Gtk::PACK_SHRINK);
+			
+			dialog->add_button("Set", 1);
+			dialog->show_all();
+			int result = dialog->run();
+			dialog->close();
+			while (Gtk::Main::events_pending()) {
+			    Gtk::Main::iteration();
+			}
+			if (result == 1) {
+			    intAmount = c_amount.get_active_row_number();
+			    switch(intAmount) {
+				case 0:
+				    amount = "Light";
+				    break;
+				case 1:
+				    amount = "Normal";
+				    break;
+				case 2:
+				    amount = "Extra";
+				    break;
+				case 3:
+				    amount = "Drenched";
+				    break;
+				default:
+				    break;
+			    }
+			    emporium.addItem(Topping(name, description, rawCost, retailPrice, amount));
+			}
+		    }
 			break;
 		    default:
 			break;
