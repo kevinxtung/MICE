@@ -1,10 +1,9 @@
-#include <string.h>
 #include "item.h"
 
-Item::Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity)
-    :	m_name{name}, m_description{description}, m_rawCost{rawCost}, m_retailPrice{retailPrice}, m_quantity{quantity} {
-}
+Item::Item(std::string name, std::string description, double rawCost, double retailPrice)
+    :	m_name{name}, m_description{description}, m_rawCost{rawCost}, m_retailPrice{retailPrice}, m_quantity{0} { }
 
+std::string Item::getType() {return "Item";}
 std::string Item::getName() {return m_name;}
 std::string Item::getDescription() {return m_description;}
 double Item::getRawCost() {return m_rawCost;}

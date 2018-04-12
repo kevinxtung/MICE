@@ -2,6 +2,7 @@
 
 #include "classes/emporium/emporium.h"
 #include "classes/view/view.h"
+#include "classes/dialogs/dialogs.h"
 
 class Controller {
     public:

@@ -4,12 +4,14 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o gui_window.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
-	$(FFLAGS) -o enviro main.o gui_window.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
+main: main.o gui_window.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
+	$(FFLAGS) -o enviro main.o gui_window.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 gui_window.o: ./classes/gui_window/gui_window.cpp ./classes/gui_window/gui_window.h
 	$(FFLAGS) -c ./classes/gui_window/gui_window.cpp $(GTKFLAGS)
+dialogs.o: ./classes/dialogs/dialogs.cpp ./classes/dialogs/dialogs.h
+	$(FFLAGS) -c ./classes/dialogs/dialogs.cpp $(GTKFLAGS)
 controller.o: ./classes/controller/controller.cpp ./classes/controller/controller.h
 	$(FFLAGS) -c ./classes/controller/controller.cpp $(GTKFLAGS)
 view.o: ./classes/view/view.cpp ./classes/view/view.h

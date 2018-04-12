@@ -1,12 +1,15 @@
 #pragma once
 
-#include <string>
 #include "classes/item/item.h"
 
 class Topping : public Item {
     public:
-	Topping(std::string name, std::string description, double rawCost, double retailPrice, int quantity, std::string load) : Item(name, description, rawCost, retailPrice, quantity) {load = load;}
-	std::string getLoad();
+	Topping(std::string name, std::string description, double rawCost, double retailPrice, std::string amount)
+	: Item(name, description, rawCost, retailPrice), m_amount{amount} { }
+
+	// Getters
+	std::string getType() override;
+	std::string getAmount();
     private:
-	std::string load;
+	std::string m_amount;
 };

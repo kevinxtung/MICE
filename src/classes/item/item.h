@@ -12,16 +12,16 @@ class Item {
 	int m_quantity;
 	//Gtk::Image* m_image;
     public:
-	Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity);
+	Item(std::string name, std::string description, double rawCost, double retailPrice);
 	//~Item();
 
 	// Getters
+	virtual std::string getType();
 	std::string getName();
 	std::string getDescription();
 	double getRawCost();
 	double getRetailPrice();
 	int getQuantity();
 
-	bool isInStock();
-	
+	bool isInStock();	
 };
