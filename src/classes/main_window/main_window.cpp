@@ -39,11 +39,13 @@ void Main_Window::defaultScreen() {
     mainbox->add(*box);
     box->add(*toolbar);
 
-    i_order = Gtk::manage(new Gtk::Image{"randomicon.png"});
+    i_order = Gtk::manage(new Gtk::Image{"startorderbutton.png"});
     b_order = Gtk::manage(new Gtk::ToolButton(*i_order));
     b_order->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onOrderClick));
-    toolbar->append(*b_order);
-
+    Gtk::Toolbar* center = Gtk::manage(new Gtk::Toolbar);
+    center->append(*b_order);
+    box->set_center_widget(*center);
+    
     Gtk::SeparatorToolItem *sep = Gtk::manage(new Gtk::SeparatorToolItem());
     sep->set_expand(true);
     toolbar->append(*sep);
