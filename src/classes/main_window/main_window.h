@@ -28,7 +28,7 @@ class Main_Window : public Gtk::Window {
 	//************************//
 
 	// Create/Start Order
-	Gtk::ToolButton *b_order;
+	Gtk::Button *b_order;
 	Gtk::Image *i_order;
 
 	//************************//

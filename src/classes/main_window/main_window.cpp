@@ -1,5 +1,5 @@
 #include "main_window.h"
-
+#include <iostream>
 //****************//
 //*GUI MANAGEMENT*//
 //****************//
@@ -12,7 +12,7 @@ Gtk::Toolbar* toolbar = NULL;
 Main_Window::Main_Window(Controller* controller) : m_controller(controller) {
 
     // GUI SETUP
-    set_default_size(1366, 768);
+    set_default_size(1366, 768); // 1366x768 Native
     fullscreen();
 
     mainbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
@@ -40,12 +40,15 @@ void Main_Window::defaultScreen() {
     box->add(*toolbar);
 
     i_order = Gtk::manage(new Gtk::Image{"startorderbutton.png"});
-    b_order = Gtk::manage(new Gtk::ToolButton(*i_order));
+    b_order = Gtk::manage(new Gtk::Button());
+    b_order->set_image(*i_order);
     b_order->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onOrderClick));
-    Gtk::Toolbar* center = Gtk::manage(new Gtk::Toolbar);
-    center->append(*b_order);
-    box->set_center_widget(*center);
     
+    int x, y;
+    Gtk::Window::get_size(x, y);
+    
+    box->set_center_widget(*b_order);
+
     Gtk::SeparatorToolItem *sep = Gtk::manage(new Gtk::SeparatorToolItem());
     sep->set_expand(true);
     toolbar->append(*sep);
