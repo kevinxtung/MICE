@@ -4,6 +4,10 @@
 #include "classes/emporium/emporium.h"
 #include "classes/controller/controller.h"
 
+extern Gtk::Box* mainbox;
+extern Gtk::Box* box;
+extern Gtk::Toolbar* toolbar;
+
 class Main_Window : public Gtk::Window {
     public:
 	Main_Window(Controller* controller);
@@ -14,6 +18,7 @@ class Main_Window : public Gtk::Window {
 	// Screens
 	void defaultScreen();
 	void employeeScreen();
+	void orderScreen();
 
 	// Callbacks
 	void onOrderClick();
@@ -22,7 +27,9 @@ class Main_Window : public Gtk::Window {
 
     private:
 	Controller* m_controller;
-	
+
+	Gtk::Image *i_splash;
+
 	//************************//
 	//*Customer Functionality*//
 	//************************//
@@ -30,6 +37,16 @@ class Main_Window : public Gtk::Window {
 	// Create/Start Order
 	Gtk::Button *b_order;
 	Gtk::Image *i_order;
+
+	//*********************//
+	//*Order Functionality*//
+	//*********************//
+	// Holds images for drawing ice cream.
+	std::vector<Gtk::Image> *i_imageBox;
+
+	
+
+
 
 	//************************//
 	//*Employee Functionality*//

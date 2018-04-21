@@ -2,6 +2,7 @@
 #include "classes/topping/topping.h"
 #include "classes/container/container.h"
 #include "classes/scoop/scoop.h"
+#include "classes/order/order.h"
 #include <string>
 #include <iostream>
 
@@ -190,7 +191,10 @@ void Controller::execute(int cmd) {
 	    }
 	    break;
 	}
-	case 2:
+	case 2: {
+		//emporium.addOrder(Orde);
+	}
+	    
 	    break;
 	default:
 	    view.error("ERROR: INVALID COMMAND.");

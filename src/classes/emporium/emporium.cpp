@@ -4,14 +4,6 @@ void Emporium::addItem(Item item) {
     m_items.push_back(item);
 }
 
-/*void Emporium::addScoop(Scoop scoop) {
-    m_scoops.push_back(scoop);
-}*/
-/*
-void Emporium::addContainer(Container container) {
-    containers.push_back(container);
+void Emporium::addOrder(Order order) {
+    m_orders.push_back(order);
 }
-
-void Emporium::addTopping(Topping topping) {
-    toppings.push_back(topping);
-}*/

@@ -4,12 +4,20 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o main_window.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
-	$(FFLAGS) -o mice main.o main_window.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
+main: main.o main_window.o main_window_default.o main_window_employee.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
+	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 main_window.o: ./classes/main_window/main_window.cpp ./classes/main_window/main_window.h
 	$(FFLAGS) -c ./classes/main_window/main_window.cpp $(GTKFLAGS)
+main_window_default.o: ./classes/main_window/main_window_default.cpp ./classes/main_window/main_window.h
+	$(FFLAGS) -c ./classes/main_window/main_window_default.cpp $(GTKFLAGS)
+main_window_employee.o: ./classes/main_window/main_window_employee.cpp ./classes/main_window/main_window.h
+	$(FFLAGS) -c ./classes/main_window/main_window_employee.cpp $(GTKFLAGS)
+order.o: ./classes/order/order.cpp ./classes/order/order.h
+	$(FFLAGS) -c ./classes/order/order.cpp $(GTKFLAGS)
+serving.o: ./classes/serving/serving.cpp ./classes/serving/serving.h
+	$(FFLAGS) -c ./classes/serving/serving.cpp $(GTKFLAGS)
 dialogs.o: ./classes/dialogs/dialogs.cpp ./classes/dialogs/dialogs.h
 	$(FFLAGS) -c ./classes/dialogs/dialogs.cpp $(GTKFLAGS)
 controller.o: ./classes/controller/controller.cpp ./classes/controller/controller.h
