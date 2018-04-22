@@ -44,10 +44,11 @@ class Main_Window : public Gtk::Window {
 	// Holds images for drawing ice cream.
 	std::vector<Gtk::Image> *i_imageBox;
 
-	
-
-
-
+	/*Gtk::Button *b_;
+	Gtk::Button *b_;
+	Gtk::Button *b_;
+	Gtk::Button *b_;	
+*/
 	//************************//
 	//*Employee Functionality*//
 	//************************//

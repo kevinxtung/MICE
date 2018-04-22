@@ -41,7 +41,7 @@ Main_Window::~Main_Window() { }
 
 
 void Main_Window::onOrderClick() {
-    m_controller->execute(1);
+    orderScreen();
 }
 
 void Main_Window::onCreateItemClick() {
