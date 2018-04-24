@@ -4,8 +4,8 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o
-	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o $(GTKFLAGS)
+main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o person.o
+	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o person.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 main_window.o: ./classes/main_window/main_window.cpp ./classes/main_window/main_window.h
@@ -32,7 +32,8 @@ item.o: ./classes/item/item.cpp ./classes/item/item.h
 	$(FFLAGS) -c ./classes/item/item.cpp $(GTKFLAGS)
 scoop.o: ./classes/scoop/scoop.cpp ./classes/scoop/scoop.h
 	$(FFLAGS) -c ./classes/scoop/scoop.cpp $(GTKFLAGS)
-
+person.o: ./classes/person/person.cpp ./classes/person/person.h
+	$(FFLAGS) -c ./classes/person/person.cpp $(GTKFLAGS)
 
 test: test.o container.o item.o
 	$(FFLAGS) -o test test.o container.o item.o $(GTKFLAGS)

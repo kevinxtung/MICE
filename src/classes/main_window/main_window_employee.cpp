@@ -17,5 +17,10 @@ void Main_Window::employeeScreen() {
     b_createItem->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onCreateItemClick));
     toolbar->append(*b_createItem);
 
+    Gtk::Image* i_66 = Gtk::manage(new Gtk::Image{"66.png"});
+    Gtk::ToolButton* b_66 = Gtk::manage(new Gtk::ToolButton(*i_66));
+    b_66->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::generate));
+    toolbar->append(*b_66);
+
     mainbox->show_all();
 }

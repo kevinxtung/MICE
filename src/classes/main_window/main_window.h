@@ -35,11 +35,14 @@ class Main_Window : public Gtk::Window {
 	void registerObserver();
 
 	void onOrderClick();
+		void onOrderDynamicClick(int button);
 		void onOrderBackClick();
 		void onOrderNextClick();
 
 	void onEmployeeClick();
 	void onCreateItemClick();
+
+	void generate();
 
     private:
 	Controller* m_controller;

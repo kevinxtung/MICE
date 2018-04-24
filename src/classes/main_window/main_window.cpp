@@ -53,3 +53,7 @@ void Main_Window::onCreateItemClick() {
 void Main_Window::onEmployeeClick() {
     employeeScreen();
 }
+
+void Main_Window::generate() {
+    m_controller->execute(66);
+}
