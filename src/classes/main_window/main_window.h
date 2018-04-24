@@ -4,9 +4,15 @@
 #include "classes/emporium/emporium.h"
 #include "classes/controller/controller.h"
 
+// DELETE
+#include "classes/container/container.h"
+#include <string>
+
 extern Gtk::Box* mainbox;
 extern Gtk::Box* box;
 extern Gtk::Toolbar* toolbar;
+extern Gtk::Box* selections; // Used in orderScreen();
+extern int position;
 
 class Main_Window : public Gtk::Window {
     public:
@@ -18,10 +24,20 @@ class Main_Window : public Gtk::Window {
 	// Screens
 	void defaultScreen();
 	void employeeScreen();
+
 	void orderScreen();
+		void showContainers();
+		void showScoops();
+		void showToppings();
+
 
 	// Callbacks
+	void registerObserver();
+
 	void onOrderClick();
+		void onOrderBackClick();
+		void onOrderNextClick();
+
 	void onEmployeeClick();
 	void onCreateItemClick();
 

@@ -8,11 +8,7 @@ class Container : public Item {
 	    : Item(name, description, rawCost, retailPrice), m_maxScoops{maxScoops} { }
 	int getMaxScoops();
 
-	// POLYMORPHISM
-	// I am turning this program in partially working, so I
-	// don't actually have the necessary methods to demonstrate
-	// polymorphism. So, here's an override.
-	std::string getType() override;
+	std::string getType() const override;
 
     private:
 	int m_maxScoops;

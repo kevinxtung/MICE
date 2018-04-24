@@ -7,5 +7,5 @@ class Scoop : public Item {
 	Scoop(std::string name, std::string description, double rawCost, double retailPrice)
 	    : Item(name, description, rawCost, retailPrice) { }
 	
-	std::string getType() override;
+	std::string getType() const override;
 };

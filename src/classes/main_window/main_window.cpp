@@ -8,6 +8,7 @@
 Gtk::Box* mainbox = NULL;
 Gtk::Box* box = NULL;
 Gtk::Toolbar* toolbar = NULL;
+Gtk::Box* selections = NULL;
 
 Main_Window::Main_Window(Controller* controller) : m_controller(controller) {
 
@@ -41,6 +42,7 @@ Main_Window::~Main_Window() { }
 
 
 void Main_Window::onOrderClick() {
+    position = 1;
     orderScreen();
 }
 

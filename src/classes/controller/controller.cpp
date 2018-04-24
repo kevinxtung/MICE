@@ -9,7 +9,7 @@
 void Controller::cli() {
     int cmd = -1;
     while (cmd != 0) {
-	cmd = view.select();
+	cmd = m_view.select();
 	execute(cmd);
     }
 }
@@ -129,12 +129,13 @@ void Controller::execute(int cmd) {
 			}
 			if (result == 1) {
 			    maxScoops = std::stoi(e_maxScoops.get_text());
-			    emporium.addItem(Container(name, description, rawCost, retailPrice, maxScoops));
+			    m_emporium.addContainer(Container(name, description, rawCost, retailPrice, maxScoops));
 			}
 			break;
 		    }
 		    case 1:
-			emporium.addItem(Scoop(name, description, rawCost, retailPrice));
+				// FIX
+				m_emporium.addScoop(Scoop(name, description, rawCost, retailPrice));
 			break;
 		    case 2: {
 			int intAmount;
@@ -181,7 +182,7 @@ void Controller::execute(int cmd) {
 				default:
 				    break;
 			    }
-			    emporium.addItem(Topping(name, description, rawCost, retailPrice, amount));
+			    m_emporium.addTopping(Topping(name, description, rawCost, retailPrice, amount));
 			}
 		    }
 			break;
@@ -197,8 +198,12 @@ void Controller::execute(int cmd) {
 	    
 	    break;
 	default:
-	    view.error("ERROR: INVALID COMMAND.");
+	    m_view.error("ERROR: INVALID COMMAND.");
 	    break;
     }
 
+}
+
+Emporium Controller::getEmporium() {
+	return m_emporium;
 }

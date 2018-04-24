@@ -6,10 +6,13 @@
 
 class Controller {
     public:
-	Controller(Emporium& emporium) : emporium(emporium), view(View(emporium)) { }
-	void cli();
-	void execute(int cmd);
+		Controller(Emporium& emporium) : m_emporium{emporium}, m_view{View(emporium)} { }
+		void cli();
+		void execute(int cmd);
+
+		Emporium getEmporium();
+
     private:
-	Emporium& emporium;
-	View view;
+		Emporium& m_emporium;
+		View m_view;
 };

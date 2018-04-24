@@ -1,9 +1,5 @@
 #include "container.h"
 
-std::string Container::getType() {
-    return "Container";
-}
+std::string Container::getType() const {return "Container";}
 
-int Container::getMaxScoops() {
-    return m_maxScoops;
-}
+int Container::getMaxScoops() {return m_maxScoops;}

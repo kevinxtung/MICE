@@ -8,7 +8,7 @@ class Topping : public Item {
 	: Item(name, description, rawCost, retailPrice), m_amount{amount} { }
 
 	// Getters
-	std::string getType() override;
+	std::string getType() const override;
 	std::string getAmount();
     private:
 	std::string m_amount;

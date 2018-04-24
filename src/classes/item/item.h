@@ -16,7 +16,7 @@ class Item {
 	//~Item();
 
 	// Getters
-	virtual std::string getType();
+	virtual std::string getType() const;
 	std::string getName();
 	std::string getDescription();
 	double getRawCost();
