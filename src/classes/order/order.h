@@ -19,7 +19,7 @@ class Order {
 
 		// Setters
 		void addServing(Serving serving);
-		// ADD void removeServing();
+		void removeServing();
 		void pay();
 		void cancel();
 

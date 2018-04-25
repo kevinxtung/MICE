@@ -3,16 +3,14 @@
 #include <gtkmm.h>
 #include "classes/emporium/emporium.h"
 #include "classes/controller/controller.h"
-
-// DELETE
-#include "classes/container/container.h"
-#include <string>
+#include "classes/serving/serving.h"
+#include "classes/order/order.h"
 
 extern Gtk::Box* mainbox;
 extern Gtk::Box* box;
 extern Gtk::Toolbar* toolbar;
 extern Gtk::Box* selections; // Used in orderScreen();
-extern int position;
+extern int position; // Used in orderScreen();
 
 class Main_Window : public Gtk::Window {
     public:
@@ -30,6 +28,7 @@ class Main_Window : public Gtk::Window {
 		void showScoops();
 		void showToppings();
 
+	void finalizeScreen();
 
 	// Callbacks
 	void registerObserver();
@@ -38,6 +37,10 @@ class Main_Window : public Gtk::Window {
 		void onOrderDynamicClick(int button);
 		void onOrderBackClick();
 		void onOrderNextClick();
+		void onOrderFinishClick();
+
+		void flushServing();
+		void flushOrder();
 
 	void onEmployeeClick();
 	void onCreateItemClick();
@@ -63,11 +66,6 @@ class Main_Window : public Gtk::Window {
 	// Holds images for drawing ice cream.
 	std::vector<Gtk::Image> *i_imageBox;
 
-	/*Gtk::Button *b_;
-	Gtk::Button *b_;
-	Gtk::Button *b_;
-	Gtk::Button *b_;	
-*/
 	//************************//
 	//*Employee Functionality*//
 	//************************//

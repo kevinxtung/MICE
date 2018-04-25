@@ -7,6 +7,8 @@
 
 class Serving {
     public:
+		Serving();
+
 	// Getters
 	Container getContainer();
 	std::vector<Scoop> getScoops();
@@ -17,10 +19,12 @@ class Serving {
 	void addScoop(Scoop scoop);
 	void addTopping(Topping topping);
 	
+	void removeScoop();
+	void removeTopping();
 	// ADD REMOVE SCOOP/TOPPING FEATURES
 
     private:
-	Container m_container;
-	std::vector<Scoop> m_scoops;
-	std::vector<Topping> m_toppings;
+		Container m_container;
+		std::vector<Scoop> m_scoops;
+		std::vector<Topping> m_toppings;
 };

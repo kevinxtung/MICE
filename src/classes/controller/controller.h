@@ -10,7 +10,7 @@ class Controller {
 		void cli();
 		void execute(int cmd);
 
-		Emporium getEmporium();
+		Emporium& getEmporium();
 
     private:
 		Emporium& m_emporium;

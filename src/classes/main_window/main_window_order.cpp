@@ -6,6 +6,9 @@
 // Shows position end-user is at with screens.
 int position = -1; // 1 is containers, 2 is scoops, 3 is toppings. 0 is main.
 
+Serving serving;
+Order order;
+
 void Main_Window::orderScreen() {
     clean();
 
@@ -33,7 +36,7 @@ void Main_Window::orderScreen() {
 
     Gtk::Image *i_finishOrder = Gtk::manage(new Gtk::Image{"finishorder.png"});
     Gtk::Button *b_finishOrder = Gtk::manage(new Gtk::Button());
-    b_finishOrder->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onOrderNextClick));
+    b_finishOrder->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onOrderFinishClick));
     b_finishOrder->set_image(*i_finishOrder);
 
     // Switch that draws GUI based on current position in creating a serving.
@@ -114,6 +117,7 @@ void Main_Window::showScoops() {
         Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button(i.getName()));
         b_styleButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
         styleButtons->pack_start(*b_styleButton, Gtk::PACK_SHRINK, 0);
+        x++;
     }
     /* STRETCH GOAL
     Gtk::Label *size = Gtk::manage(new Gtk::Label("Size"));
@@ -163,6 +167,18 @@ void Main_Window::showToppings() {
 
 void Main_Window::onOrderDynamicClick(int button) {
     std::cout << "callback id " << button << std::endl;
+    if (button < 200000) {      // Container Callback
+        //std::vector<Container::Container> containers = m_controller->getEmporium().getContainers();
+        serving.setContainer((m_controller->getEmporium().getContainers())[button-100000]);
+    }
+    else if (button < 300000){  // Scoop Callback
+        std::vector<Scoop> scoops = m_controller->getEmporium().getScoops();
+        serving.addScoop(scoops[button-200000]);
+    }
+    else {                      // Topping Callback
+        std::vector<Topping> toppings = m_controller->getEmporium().getToppings();
+        serving.addTopping(toppings[button-300000]);
+    }
 }
 
 void Main_Window::onOrderBackClick() {
@@ -178,9 +194,36 @@ void Main_Window::onOrderBackClick() {
 void Main_Window::onOrderNextClick() {
     position++;
     if (position >= 4) {
-        defaultScreen();
+        order.addServing(serving);
+        flushServing();
+        position = 1;
+        orderScreen();
     }
     else {
         orderScreen();
+    }
+}
+
+void Main_Window::onOrderFinishClick() {
+    // ADD something to force selecting cone, cream, and top.
+    order.addServing(serving);
+    flushServing();
+    m_controller->getEmporium().addOrder(order);
+    flushOrder();
+    finalizeScreen();
+}
+
+void Main_Window::flushServing() {
+    while (!serving.getScoops().empty()) {
+        serving.removeScoop();
+    }
+    while (!serving.getToppings().empty()) {
+        serving.removeTopping();
+    }
+}
+
+void Main_Window::flushOrder() {
+    while (!order.getServings().empty()) {
+        order.removeServing();
     }
 }

@@ -4,7 +4,7 @@
 unsigned int Order::m_topID = 0;
 
 // Constructor
-Order::Order() : m_ID{getNextID()}, m_status{"Open"} { }
+Order::Order() : m_ID{++m_topID}, m_status{"Open"} { }
 
 
 
@@ -17,6 +17,7 @@ unsigned int Order::getNextID() {return ++m_topID;}
 
 // Setters
 void Order::addServing(Serving serving) {m_servings.push_back(serving);}
+void Order::removeServing() {m_servings.pop_back();}
 void Order::pay() {m_status = "PAID";}
 void Order::cancel() {m_status = "CANCELLED";}
 

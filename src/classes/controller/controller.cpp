@@ -134,7 +134,6 @@ void Controller::execute(int cmd) {
 			break;
 		    }
 		    case 1:
-				// FIX
 				m_emporium.addScoop(Scoop(name, description, rawCost, retailPrice));
 			break;
 		    case 2: {
@@ -212,6 +211,6 @@ void Controller::execute(int cmd) {
 
 }
 
-Emporium Controller::getEmporium() {
+Emporium& Controller::getEmporium() {
 	return m_emporium;
 }

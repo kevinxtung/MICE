@@ -24,14 +24,18 @@ class Emporium {
 		std::vector<Topping> getToppings();
 
 		std::vector<Order> getOrders();
+		
+		double getBalance();
+		void addBalance(double balance);
+		void subBalance(double balance);
 		// ADD loading and saving
     private:
 		std::vector<Item> m_items;
 		std::vector<Container> m_containers;
 		std::vector<Scoop> m_scoops;
 		std::vector<Topping> m_toppings;
-
 		std::vector<Order> m_orders;
 
+		double m_balance;
 		//std::vector<Person> m_people;
 };
