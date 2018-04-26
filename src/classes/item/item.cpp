@@ -2,6 +2,8 @@
 
 Item::Item(std::string name, std::string description, double rawCost, double retailPrice)
     :	m_name{name}, m_description{description}, m_rawCost{rawCost}, m_retailPrice{retailPrice}, m_quantity{0} { }
+Item::Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity)
+    :	m_name{name}, m_description{description}, m_rawCost{rawCost}, m_retailPrice{retailPrice}, m_quantity{quantity} { }
 
 std::string Item::getType() const {return "Item";}
 std::string Item::getName() {return m_name;}

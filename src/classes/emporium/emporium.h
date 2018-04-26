@@ -11,12 +11,17 @@
 
 class Emporium {
     public:
+		Emporium() : m_balance{0.0} { }
 		void addItem(Item item);
 		void addContainer(Container container);
 		void addScoop(Scoop scoop);
 		void addTopping(Topping topping);
 
 		void addOrder(Order order);
+
+		void setBalance(double balance);
+		void addBalance(double balance);
+		void subBalance(double balance);
 
 		std::vector<Item> getItems();
 		std::vector<Container> getContainers();
@@ -26,11 +31,11 @@ class Emporium {
 		std::vector<Order> getOrders();
 		
 		double getBalance();
-		void addBalance(double balance);
-		void subBalance(double balance);
+
+
 		// ADD loading and saving
     private:
-		std::vector<Item> m_items;
+		//std::vector<Item> m_items;
 		std::vector<Container> m_containers;
 		std::vector<Scoop> m_scoops;
 		std::vector<Topping> m_toppings;

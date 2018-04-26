@@ -13,6 +13,8 @@ class Item {
 	//Gtk::Image* m_image;
     public:
 	Item(std::string name, std::string description, double rawCost, double retailPrice);
+	Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity);
+
 	//~Item();
 
 	// Getters

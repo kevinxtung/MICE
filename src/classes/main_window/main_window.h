@@ -43,9 +43,12 @@ class Main_Window : public Gtk::Window {
 		void flushOrder();
 
 	void onEmployeeClick();
-	void onCreateItemClick();
+		void onCreateItemClick();
+			void generate();
+		void onSaveClick();
+		void onLoadClick();
 
-	void generate();
+
 
     private:
 	Controller* m_controller;

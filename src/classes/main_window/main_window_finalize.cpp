@@ -13,7 +13,7 @@ void Main_Window::finalizeScreen() {
     unsigned int top = orders[0].getTopID();
     std::cout << "top is " << top << std::endl;
     std::vector<Serving> servings;
-    std::cout << "b" << std::endl;    
+    std::cout << "b" << std::endl;    // FIX
     servings = orders[top-1].getServings(); // orders[top-1] is accessed since orders start at 1.
     std::cout << "b" << std::endl;    
     

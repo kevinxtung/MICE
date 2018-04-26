@@ -194,8 +194,14 @@ void Controller::execute(int cmd) {
 	case 2: {
 		//emporium.addOrder(Orde);
 	}
-	    
-	    break;
+	case 3: { // Save
+		save();
+		break;
+	}
+	case 4: { // Load
+		load();
+		break;
+	}
 	case 66: {
 		m_emporium.addContainer(Container("Waffle Cone", "A waffle cone.", 0.75, 1.00, 3));
 		m_emporium.addContainer(Container("Cup", "A wax coated cup.", 0.15, 0.20, 4));
@@ -203,6 +209,7 @@ void Controller::execute(int cmd) {
 		m_emporium.addScoop(Scoop("Mint Chocolate Chip", "Deliciously minty.", 0.55, 0.80));
 		m_emporium.addTopping(Topping("Peanuts", "Chopped nuts!", 0.50, 0.75, "Normal"));
 		m_emporium.addTopping(Topping("Hot Fudge", "Creamy and fattening.", 0.30, 0.75, "Normal"));
+		break;
 	}
 	default:
 	    m_view.error("ERROR: INVALID COMMAND.");

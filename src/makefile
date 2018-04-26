@@ -4,8 +4,8 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o person.o
-	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o order.o serving.o dialogs.o controller.o view.o emporium.o item.o scoop.o container.o topping.o person.o $(GTKFLAGS)
+main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o
+	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 main_window.o: ./classes/main_window/main_window.cpp ./classes/main_window/main_window.h
@@ -26,6 +26,8 @@ dialogs.o: ./classes/dialogs/dialogs.cpp ./classes/dialogs/dialogs.h
 	$(FFLAGS) -c ./classes/dialogs/dialogs.cpp $(GTKFLAGS)
 controller.o: ./classes/controller/controller.cpp ./classes/controller/controller.h
 	$(FFLAGS) -c ./classes/controller/controller.cpp $(GTKFLAGS)
+controller_save.o: ./classes/controller/controller_save.cpp ./classes/controller/controller.h
+	$(FFLAGS) -c ./classes/controller/controller_save.cpp $(GTKFLAGS)
 view.o: ./classes/view/view.cpp ./classes/view/view.h
 	$(FFLAGS) -c ./classes/view/view.cpp $(GTKFLAGS)
 emporium.o: ./classes/emporium/emporium.cpp ./classes/emporium/emporium.h
