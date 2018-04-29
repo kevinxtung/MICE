@@ -3,8 +3,6 @@
 #include <sstream>
 #include <string>
 
-#include <iostream>
-
 void Main_Window::showOrdersScreen() {
     clean();
 
@@ -17,7 +15,6 @@ void Main_Window::showOrdersScreen() {
     std::vector<Serving> servings;
 
     for (auto i : orders) {
-        std::cout << i.getStatus() << std::endl;
         if (i.getStatus() == "UNFILLED") {
             servings = i.getServings();
             for (auto i : servings) {
@@ -26,14 +23,14 @@ void Main_Window::showOrdersScreen() {
                 std::vector<Topping> toppings = i.getToppings();
                 Gtk::Label* containerText = Gtk::manage(new Gtk::Label());
                 std::stringstream text;
-                text << container.getName() << container.getRetailPrice() << std::endl;
+                text << container.getName() << std::endl;
                 containerText->set_text(text.str());
                 for (auto i : scoops) {
-                    text << i.getName() << " Scoop" << std::endl;
+                    text << "\t" << i.getName() << " Scoop" << std::endl;
                     containerText->set_text(text.str());
                 }
                 for (auto i : toppings) {
-                    text << i.getName() << " Topping" << std::endl;
+                    text << "\t" << i.getName() << " Topping" << std::endl;
                     containerText->set_text(text.str());
                     orderBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
                 }

@@ -1,2 +1,8 @@
 Balance,,0.000000
-ID,,0
+ID,,1
+Container,,Waffle Cone,,A waffle cone.,,0.750000,,1.000000,,0,,3
+Container,,Cup,,A wax coated cup.,,0.150000,,0.200000,,0,,4
+Scoop,,Vanilla,,Plain vanilla.,,0.490000,,0.800000,,0
+Scoop,,Mint Chocolate Chip,,Deliciously minty.,,0.550000,,0.800000,,0
+Topping,,Peanuts,,Chopped nuts!,,0.500000,,0.750000,,0,,Normal
+Topping,,Hot Fudge,,Creamy and fattening.,,0.300000,,0.750000,,0,,Normal

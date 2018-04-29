@@ -3,9 +3,6 @@
 #include <string>
 #include <sstream>
 
-// DELETE
-#include <iostream>
-
 unsigned int top;
 
 void Main_Window::finalizeScreen() {
@@ -22,7 +19,7 @@ void Main_Window::finalizeScreen() {
         std::vector<Topping> toppings = i.getToppings();
         Gtk::Label* containerText = Gtk::manage(new Gtk::Label());
         std::stringstream text;
-        text << container.getName() << container.getRetailPrice() << std::endl;
+        text << container.getName() << ": " << container.getRetailPrice() << std::endl;
         containerText->set_text(text.str());
         confirmationBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
         for (auto i : scoops) {
@@ -55,8 +52,7 @@ void Main_Window::finalizeScreen() {
 
 void Main_Window::onFinishPayClick() {
     std::vector<Order>& orders = m_controller->getEmporium().getOrders();
-    std::cout << orders[0].getStatus() << std::endl;
-    orders[0].recieve();
+    orders[top-1].recieve();
     defaultScreen();
 }
 
