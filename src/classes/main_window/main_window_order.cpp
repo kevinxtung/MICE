@@ -208,6 +208,7 @@ void Main_Window::onOrderFinishClick() {
     // ADD something to force selecting cone, cream, and top.
     order.addServing(serving);
     flushServing();
+    order.setID(m_controller->getEmporium().getNextID());
     m_controller->getEmporium().addOrder(order);
     flushOrder();
     finalizeScreen();

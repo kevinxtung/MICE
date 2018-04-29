@@ -1,10 +1,7 @@
 #include "order.h"
 
-// Initialization
-unsigned int Order::m_topID = 0;
-
 // Constructor
-Order::Order() : m_ID{++m_topID}, m_status{"Open"} { }
+Order::Order() : m_status{"OPEN"} { }
 
 
 
@@ -12,12 +9,14 @@ Order::Order() : m_ID{++m_topID}, m_status{"Open"} { }
 std::vector<Serving> Order::getServings() {return m_servings;}
 std::string Order::getStatus() {return m_status;}
 unsigned int Order::getID() {return m_ID;}
-unsigned int Order::getTopID() {return m_topID;}
-unsigned int Order::getNextID() {return ++m_topID;}
 
 // Setters
+void Order::setID(unsigned int ID) {m_ID = ID;}
 void Order::addServing(Serving serving) {m_servings.push_back(serving);}
 void Order::removeServing() {m_servings.pop_back();}
+void Order::recieve() {m_status = "UNFILLED";}
 void Order::pay() {m_status = "PAID";}
+void Order::fill() {m_status = "FILLED";}
+void Order::close() {m_status = "CLOSED";}
 void Order::cancel() {m_status = "CANCELLED";}
 

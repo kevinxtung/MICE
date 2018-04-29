@@ -31,6 +31,8 @@ void Main_Window::clean() {
 
 Main_Window::~Main_Window() { }
 
+Controller* Main_Window::getController() {return m_controller;}
+
 //*********//
 //*SCREENS*//
 //*********//

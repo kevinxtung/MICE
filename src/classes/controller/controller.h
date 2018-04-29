@@ -12,7 +12,7 @@ class Controller {
 		void execute(int cmd);
 		void save();
 		void load();
-		enum tokenCode {eBalance, eContainer, eScoop, eTopping};
+		enum tokenCode {eBalance, eContainer, eScoop, eTopping, eID};
 		tokenCode hashToken(std::string token);
 		Emporium& getEmporium();
 

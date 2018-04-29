@@ -1,4 +1,5 @@
 FIX THESE LATER
 
 1. When creating an item, clicking create without input causes stoi to crash. Needs try/catch.
-2. Top order is not updating properly.
+2. Top order is not updating properly. See finalize.
+3. Toppings are not properly set in quantity

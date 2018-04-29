@@ -9,8 +9,16 @@ void Controller::save() {
     file.open("emporium.data");
     std::string sep = ",,";
     Emporium data = getEmporium();
+
+    // Balance Portion
     std::string balance = std::to_string(data.getBalance());
-    file << "Balance" << sep << balance << std::endl; // Balance Portion
+    file << "Balance" << sep << balance << std::endl;
+
+    // ID Portion
+    std::string ID = std::to_string(data.getCurrentID());
+    file << "ID" << sep << ID << std::endl;
+
+    // Items Portion
     std::vector<Container> containers = data.getContainers();
     std::vector<Scoop> scoops = data.getScoops();
     std::vector<Topping> toppings = data.getToppings();
@@ -43,13 +51,13 @@ void Controller::load() {
     while (std::getline(file, line)) {
         token = line.substr(0, line.find(delimiter));
         switch (hashToken(token)) {
-            case 0: {
+            case 0: {   // Balance Load
                 line = line.substr(line.find(delimiter) + delimiter.length());
                 token = line.substr(0, line.find(delimiter));
                 m_emporium.setBalance(std::stod(token));
                 break;
             }
-            case 1: {
+            case 1: {   // Container Load
                 line = line.substr(line.find(delimiter) + delimiter.length());
                 token = line.substr(0, line.find(delimiter));
                 name = token;
@@ -72,7 +80,7 @@ void Controller::load() {
                 m_emporium.addContainer(Container(name, description, std::stod(rawCost), std::stod(retailPrice), std::stoi(quantity), std::stoi(uniqueArg)));
                 break;
             }
-            case 2: {
+            case 2: {   // Scoop Load
                 line = line.substr(line.find(delimiter) + delimiter.length());
                 token = line.substr(0, line.find(delimiter));
                 name = token;
@@ -92,7 +100,7 @@ void Controller::load() {
                 m_emporium.addScoop(Scoop(name, description, std::stod(rawCost), std::stod(retailPrice), std::stoi(quantity)));
                 break;
             }
-            case 3: {
+            case 3: {   // Topping Load
                 line = line.substr(line.find(delimiter) + delimiter.length());
                 token = line.substr(0, line.find(delimiter));
                 name = token;
@@ -115,6 +123,12 @@ void Controller::load() {
                 m_emporium.addTopping(Topping(name, description, std::stod(rawCost), std::stod(retailPrice), std::stoi(quantity), uniqueArg));
                 break;
             }
+            case 4: {   // ID Load
+                line = line.substr(line.find(delimiter) + delimiter.length());
+                token = line.substr(0, line.find(delimiter));
+                m_emporium.setID(std::stod(token));
+                break;
+            }
             default: {
                 while ((pos = line.find(delimiter)) != std::string::npos) {
                     token = line.substr(0, pos);
@@ -133,4 +147,5 @@ Controller::tokenCode Controller::hashToken(std::string token) {
     if (token == "Container") return eContainer;
     if (token == "Scoop") return eScoop;
     if (token == "Topping") return eTopping;
+    if (token == "ID") return eID;
 }

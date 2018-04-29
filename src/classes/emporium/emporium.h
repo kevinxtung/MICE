@@ -11,7 +11,7 @@
 
 class Emporium {
     public:
-		Emporium() : m_balance{0.0} { }
+		Emporium() : m_balance{0.0}, m_topID{0} { }
 		void addItem(Item item);
 		void addContainer(Container container);
 		void addScoop(Scoop scoop);
@@ -23,24 +23,24 @@ class Emporium {
 		void addBalance(double balance);
 		void subBalance(double balance);
 
-		std::vector<Item> getItems();
-		std::vector<Container> getContainers();
-		std::vector<Scoop> getScoops();
-		std::vector<Topping> getToppings();
+		void setID(unsigned int ID);
 
-		std::vector<Order> getOrders();
+		std::vector<Container>& getContainers();
+		std::vector<Scoop>& getScoops();
+		std::vector<Topping>& getToppings();
+
+		std::vector<Order>& getOrders();
 		
 		double getBalance();
-
-
-		// ADD loading and saving
+		unsigned int getNextID();
+		unsigned int getCurrentID();
     private:
-		//std::vector<Item> m_items;
 		std::vector<Container> m_containers;
 		std::vector<Scoop> m_scoops;
 		std::vector<Topping> m_toppings;
 		std::vector<Order> m_orders;
 
 		double m_balance;
+		unsigned int m_topID;
 		//std::vector<Person> m_people;
 };

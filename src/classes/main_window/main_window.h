@@ -17,11 +17,16 @@ class Main_Window : public Gtk::Window {
 	Main_Window(Controller* controller);
 	void clean();
 	virtual ~Main_Window();
+	Controller* getController();
 
     protected:
-	// Screens
+	//*********//
+	//*SCREENS*//
+	//*********//
+
 	void defaultScreen();
 	void employeeScreen();
+		void showOrdersScreen();
 
 	void orderScreen();
 		void showContainers();
@@ -30,7 +35,10 @@ class Main_Window : public Gtk::Window {
 
 	void finalizeScreen();
 
-	// Callbacks
+	//***********//
+	//*CALLBACKS*//
+	//***********//
+
 	void registerObserver();
 
 	void onOrderClick();
@@ -38,7 +46,7 @@ class Main_Window : public Gtk::Window {
 		void onOrderBackClick();
 		void onOrderNextClick();
 		void onOrderFinishClick();
-
+			void onFinishPayClick();
 		void flushServing();
 		void flushOrder();
 
@@ -53,7 +61,7 @@ class Main_Window : public Gtk::Window {
     private:
 	Controller* m_controller;
 
-	Gtk::Image *i_splash;
+	Gtk::Image* i_splash;
 
 	//************************//
 	//*Customer Functionality*//
