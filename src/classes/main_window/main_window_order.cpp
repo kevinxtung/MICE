@@ -1,7 +1,5 @@
 #include "main_window.h"
 
-#include <iostream>
-
 // Uninitialized State is -1
 // Shows position end-user is at with screens.
 int position = -1; // 1 is containers, 2 is scoops, 3 is toppings. 0 is main.

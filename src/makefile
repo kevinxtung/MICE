@@ -4,8 +4,8 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o
-	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o $(GTKFLAGS)
+main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o
+	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 main_window.o: ./classes/main_window/main_window.cpp ./classes/main_window/main_window.h
@@ -40,6 +40,14 @@ scoop.o: ./classes/scoop/scoop.cpp ./classes/scoop/scoop.h
 	$(FFLAGS) -c ./classes/scoop/scoop.cpp $(GTKFLAGS)
 person.o: ./classes/person/person.cpp ./classes/person/person.h
 	$(FFLAGS) -c ./classes/person/person.cpp $(GTKFLAGS)
+customer.o: ./classes/customer/customer.cpp ./classes/customer/customer.h
+	$(FFLAGS) -c ./classes/customer/customer.cpp $(GTKFLAGS)
+server.o: ./classes/server/server.cpp ./classes/server/server.h
+	$(FFLAGS) -c ./classes/server/server.cpp $(GTKFLAGS)
+manager.o: ./classes/manager/manager.cpp ./classes/manager/manager.h
+	$(FFLAGS) -c ./classes/manager/manager.cpp $(GTKFLAGS)
+owner.o: ./classes/owner/owner.cpp ./classes/owner/owner.h
+	$(FFLAGS) -c ./classes/owner/owner.cpp $(GTKFLAGS)
 
 test: test.o container.o item.o
 	$(FFLAGS) -o test test.o container.o item.o $(GTKFLAGS)
