@@ -6,5 +6,5 @@ Server::Server(std::string name, std::string ID, std::string phone, double salar
 void Server::gainOrder() {++m_ordersTaken;}
 void Server::setSalary(double salary) {m_salary = salary;}
 
-int Server::getOrders() {return m_ordersTaken};
-double Server::getSalary() {return m_salary};
+int Server::getOrders() {return m_ordersTaken;}
+double Server::getSalary() {return m_salary;}
