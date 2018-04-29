@@ -7,8 +7,13 @@ int position = -1; // 1 is containers, 2 is scoops, 3 is toppings. 0 is main.
 Serving serving;
 Order order;
 
+const double X_PAD = 20.0;
+const double Y_PAD = 20.0;
+
 void Main_Window::orderScreen() {
     clean();
+    Gdk::RGBA color;
+    color.set("0,1,0,0");
 
     // Custom Dialog Box
     Gtk::Box *vbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
@@ -18,6 +23,9 @@ void Main_Window::orderScreen() {
     Gtk::Label *container = Gtk::manage(new Gtk::Label("Container"));
     Gtk::Label *scoops = Gtk::manage(new Gtk::Label("Scoops"));
     Gtk::Label *toppings = Gtk::manage(new Gtk::Label("Toppings"));
+    container->set_padding(X_PAD, Y_PAD);
+    scoops->set_padding(X_PAD, Y_PAD);
+    toppings->set_padding(X_PAD, Y_PAD);
 
     // Back, Next, and Finish Buttons
     Gtk::Grid *gridButtons = Gtk::manage(new Gtk::Grid()); // Grid declared for buttons
@@ -45,6 +53,7 @@ void Main_Window::orderScreen() {
         case 1: // User is selecting containers.
             showContainers();
             container->set_markup("<span weight='bold'>Container</span>");
+            container->override_background_color(color);
             i_back = Gtk::manage(new Gtk::Image{"returntostart.png"});
             b_back->set_image(*i_back);
             break;
@@ -108,7 +117,7 @@ void Main_Window::showScoops() {
     // Container Style and Size Selection
     selections = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
 
-    Gtk::Label *style = Gtk::manage(new Gtk::Label("Style"));
+    Gtk::Label *style = Gtk::manage(new Gtk::Label("Flavor"));
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
     int x = 200000; // Scoops start at 200000
     for (auto i : m_controller->getEmporium().getScoops()) {

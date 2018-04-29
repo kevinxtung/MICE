@@ -37,11 +37,13 @@ void Main_Window::defaultScreen() {
 
     Gtk::SeparatorToolItem *sep = Gtk::manage(new Gtk::SeparatorToolItem());
     sep->set_expand(true);
+    sep->set_opacity(0.0);
     toolbar->append(*sep);
 
     i_employee = Gtk::manage(new Gtk::Image{"employeescreenbutton.png"});
     b_employee = Gtk::manage(new Gtk::ToolButton(*i_employee));
     b_employee->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onEmployeeClick));
+    b_employee->set_opacity(0.0);
     toolbar->append(*b_employee);
     
     mainbox->show_all();

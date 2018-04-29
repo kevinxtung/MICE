@@ -7,6 +7,9 @@
 // Global GUI Elements
 Gtk::Box* mainbox = NULL;
 Gtk::Box* box = NULL;
+Gtk::Box* keyboard = NULL;
+Gtk::Box* numpad = NULL;
+Gtk::Entry* entry = NULL;
 Gtk::Toolbar* toolbar = NULL;
 Gtk::Box* selections = NULL;
 

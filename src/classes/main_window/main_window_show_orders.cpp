@@ -13,10 +13,12 @@ void Main_Window::showOrdersScreen() {
     Gtk::Box* orderBox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
     std::vector<Order> orders = m_controller->getEmporium().getOrders();
     std::vector<Serving> servings;
+    std::string name;
 
     for (auto i : orders) {
         if (i.getStatus() == "UNFILLED") {
             servings = i.getServings();
+            name = i.getName();
             for (auto i : servings) {
                 auto container = i.getContainer();
                 std::vector<Scoop> scoops = i.getScoops();

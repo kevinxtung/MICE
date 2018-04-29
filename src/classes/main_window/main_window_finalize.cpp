@@ -33,6 +33,12 @@ void Main_Window::finalizeScreen() {
             confirmationBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
         }
     }
+    //************//
+    //*NAME ENTRY*//
+    //************//
+
+    entry = Gtk::manage(new Gtk::Entry());
+    keyboardSetup();
 
     //*********************//
     //*FINISH & PAY BUTTON*//
@@ -44,6 +50,9 @@ void Main_Window::finalizeScreen() {
     Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
     grid->attach(*confirmationBox, 0, 0, 1, 2);
     grid->attach(*b_finishPay, 1, 1, 1, 1);
+    grid->attach(*entry, 2, 1, 1, 1);
+    grid->attach(*keyboard, 0, 2, 1, 1);
+    numpadSetup();
     box->add(*grid);
     mainbox->add(*box);
     mainbox->show_all();
@@ -53,6 +62,7 @@ void Main_Window::finalizeScreen() {
 void Main_Window::onFinishPayClick() {
     std::vector<Order>& orders = m_controller->getEmporium().getOrders();
     orders[top-1].recieve();
+    orders[top-1].setName(entry->get_text());
     defaultScreen();
 }
 

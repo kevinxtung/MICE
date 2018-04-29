@@ -5,12 +5,17 @@
 #include "classes/controller/controller.h"
 #include "classes/serving/serving.h"
 #include "classes/order/order.h"
+#include <string>
 
 extern Gtk::Box* mainbox;
 extern Gtk::Box* box;
+extern Gtk::Box* keyboard;
+extern Gtk::Box* numpad;
+extern Gtk::Entry* entry;
 extern Gtk::Toolbar* toolbar;
 extern Gtk::Box* selections; // Used in orderScreen();
 extern int position; // Used in orderScreen();
+extern std::string input;
 
 class Main_Window : public Gtk::Window {
     public:
@@ -56,7 +61,51 @@ class Main_Window : public Gtk::Window {
 		void onSaveClick();
 		void onLoadClick();
 
+		void keyboardSetup();
+		void numpadSetup();
 
+		void Q();
+		void W();
+		void E();
+		void R();
+		void T();
+		void Y();
+		void U();
+		void I();
+		void O();
+		void P();
+
+		void A();
+		void S();
+		void D();
+		void F();
+		void G();
+		void H();
+		void J();
+		void K();
+		void L();
+
+		void Z();
+		void X();
+		void C();
+		void V();
+		void B();
+		void N();
+		void M();
+
+		void i0();
+		void i00();
+		void decimal();
+		void i1();
+		void i2();
+		void i3();
+		void i4();
+		void i5();
+		void i6();
+		void i7();
+		void i8();
+		void i9();
+		void BKSP();
 
     private:
 	Controller* m_controller;
