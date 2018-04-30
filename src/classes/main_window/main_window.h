@@ -56,6 +56,8 @@ class Main_Window : public Gtk::Window {
 		void flushServing();
 		void flushOrder();
 
+	void verifyPassword();
+
 	void onEmployeeClick();
 		void onCreateItemClick();
 			void generate();
@@ -63,7 +65,7 @@ class Main_Window : public Gtk::Window {
 		void onLoadClick();
 
 		void keyboardSetup();
-		void numpadSetup();
+		void numpadSetup(std::string type);
 		void flushEntry();
 
 		void Q();

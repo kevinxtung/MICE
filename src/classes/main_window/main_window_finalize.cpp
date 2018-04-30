@@ -52,7 +52,6 @@ void Main_Window::finalizeScreen() {
     grid->attach(*b_finishPay, 1, 1, 1, 1);
     grid->attach(*entry, 2, 1, 1, 1);
     grid->attach(*keyboard, 0, 2, 1, 1);
-    numpadSetup();
     box->add(*grid);
     mainbox->add(*box);
     mainbox->show_all();

@@ -114,7 +114,7 @@ void Main_Window::keyboardSetup() {
     keyboard->add(*keyboardBox);
 }
 
-void Main_Window::numpadSetup() {
+void Main_Window::numpadSetup(std::string type) {
     // Flush the entry box every time we are ready for the keyboard
     flushEntry();
 
@@ -170,6 +170,10 @@ void Main_Window::numpadSetup() {
 
     bottomRow->pack_start(*b_0, Gtk::PACK_SHRINK, 0);
     bottomRow->pack_start(*b_00, Gtk::PACK_SHRINK, 0);
+    if (type == "INT") {
+        b_decimal->set_sensitive(false);
+        b_decimal->set_opacity(0.0);
+    }
     bottomRow->pack_start(*b_decimal, Gtk::PACK_SHRINK, 0);
 
     numpadBox->pack_start(*topRow, Gtk::PACK_SHRINK, 0);
