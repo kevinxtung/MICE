@@ -30,8 +30,9 @@ class Main_Window : public Gtk::Window {
 	//*********//
 
 	void defaultScreen();
-	void employeeScreen();
-		void showOrdersScreen();
+	void passwordScreen();
+		void employeeScreen();
+			void showOrdersScreen();
 
 	void orderScreen();
 		void showContainers();
@@ -63,6 +64,7 @@ class Main_Window : public Gtk::Window {
 
 		void keyboardSetup();
 		void numpadSetup();
+		void flushEntry();
 
 		void Q();
 		void W();

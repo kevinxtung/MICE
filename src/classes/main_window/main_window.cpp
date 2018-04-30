@@ -56,7 +56,7 @@ void Main_Window::onCreateItemClick() {
 }
 
 void Main_Window::onEmployeeClick() {
-    employeeScreen();
+    passwordScreen();
 }
 
 void Main_Window::generate() {

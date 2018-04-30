@@ -36,7 +36,7 @@ void Main_Window::finalizeScreen() {
     //************//
     //*NAME ENTRY*//
     //************//
-
+    
     entry = Gtk::manage(new Gtk::Entry());
     keyboardSetup();
 

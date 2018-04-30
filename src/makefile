@@ -4,8 +4,8 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_keyboard.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o
-	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_keyboard.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o $(GTKFLAGS)
+main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_keyboard.o main_window_password.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o
+	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_keyboard.o main_window_password.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 main_window.o: ./classes/main_window/main_window.cpp ./classes/main_window/main_window.h
@@ -22,6 +22,13 @@ main_window_show_orders.o: ./classes/main_window/main_window_show_orders.cpp ./c
 	$(FFLAGS) -c ./classes/main_window/main_window_show_orders.cpp $(GTKFLAGS)
 main_window_keyboard.o: ./classes/main_window/main_window_keyboard.cpp ./classes/main_window/main_window.h
 	$(FFLAGS) -c ./classes/main_window/main_window_keyboard.cpp $(GTKFLAGS)
+main_window_password.o: ./classes/main_window/main_window_password.cpp ./classes/main_window/main_window.h
+	$(FFLAGS) -c ./classes/main_window/main_window_password.cpp $(GTKFLAGS)
+#main_window_placeholder.o
+#main_window_placeholder.o: ./classes/main_window/main_window_placeholder.cpp ./classes/main_window/main_window.h
+#	$(FFLAGS) -c ./classes/main_window/main_window_placeholder.cpp $(GTKFLAGS)
+
+
 order.o: ./classes/order/order.cpp ./classes/order/order.h
 	$(FFLAGS) -c ./classes/order/order.cpp $(GTKFLAGS)
 serving.o: ./classes/serving/serving.cpp ./classes/serving/serving.h

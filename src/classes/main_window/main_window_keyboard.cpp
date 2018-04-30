@@ -3,9 +3,14 @@
 
 std::string input = "";
 
+void Main_Window::flushEntry() {
+    input = "";
+    entry->set_text(input);
+}
+
 void Main_Window::keyboardSetup() {
     // Flush the entry box every time we are ready for the keyboard
-    input = "";
+    flushEntry();
 
     Gtk::Box* keyboardBox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
     Gtk::ButtonBox* topRow = Gtk::manage(new Gtk::ButtonBox());    
@@ -111,7 +116,7 @@ void Main_Window::keyboardSetup() {
 
 void Main_Window::numpadSetup() {
     // Flush the entry box every time we are ready for the keyboard
-    input = "";
+    flushEntry();
 
     Gtk::Box* numpadBox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
     Gtk::ButtonBox* topRow = Gtk::manage(new Gtk::ButtonBox());
