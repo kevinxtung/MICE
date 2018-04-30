@@ -15,9 +15,14 @@ void Main_Window::orderScreen() {
     Gdk::RGBA color;
     color.set("0,1,0,0");
 
+    Gtk::Grid *grid = Gtk::manage(new Gtk::Grid());
+
     // Custom Dialog Box
     Gtk::Box *vbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
     
+    // Custom Picture Box
+    Gtk::Box *pbox = Gtk::manage(new Gtk::Box());
+
     // Status Bar
     Gtk::Box *status = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL, 0));
     Gtk::Label *container = Gtk::manage(new Gtk::Label("Container"));
@@ -83,7 +88,11 @@ void Main_Window::orderScreen() {
     vbox->pack_start(*status, Gtk::PACK_SHRINK, 0);
     vbox->pack_start(*selections, Gtk::PACK_SHRINK, 0);
     vbox->pack_start(*gridButtons, Gtk::PACK_SHRINK, 0);
-    box->add(*vbox);
+    
+    grid->attach(*pbox, 0, 0, 1, 1);
+    grid->attach(*vbox, 1, 0, 1, 1);
+    
+    box->add(*grid);
     mainbox->add(*box);
     mainbox->show_all();
 }

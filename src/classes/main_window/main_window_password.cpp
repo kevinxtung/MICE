@@ -19,10 +19,10 @@ void Main_Window::passwordScreen() {
 
     Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
     grid->attach(*b_back, 0, 0, 1, 1);
-    grid->attach(*entry, 1, 0, 3, 1);
-    grid->attach(*numpad, 1, 1, 3, 1);
-    grid->attach(*b_clear, 1, 2, 1, 1);
-    grid->attach(*b_enter, 3, 2, 1, 1);
+    grid->attach(*entry, 1, 1, 3, 1);
+    grid->attach(*numpad, 1, 2, 3, 1);
+    grid->attach(*b_clear, 1, 3, 1, 1);
+    grid->attach(*b_enter, 3, 3, 1, 1);
 
     box->add(*grid);
     mainbox->add(*box);
@@ -34,13 +34,19 @@ void Main_Window::verifyPassword() {
     try {
         code = std::stoi(entry->get_text());
     } catch (std::exception e) {
-        entry->set_text("***INVALID SYMBOL DETECTED***");
+        entry->set_text("***INVALID INPUT***");
         return;
     }
-    if (code != 1957) {
-        defaultScreen();
+    switch (code) {
+        case 8675309:   // Owner Privilege
+            m_isOwner = true;
+        case 1957:      // Manager Privilege
+            m_isManager = true;
+        case 00:      // Employee Privilege
+            break;
+        default:
+            entry->set_text("***INVALID PIN***");
+            return;
     }
-    else {
-        employeeScreen();
-    }
+    employeeScreen();
 }

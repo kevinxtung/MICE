@@ -1,0 +1,3 @@
+#main_window_show_inventory.o
+#main_window_show_inventory.o: ./classes/main_window/main_window_show_inventory.cpp ./classes/main_window/main_window.h
+#	$(FFLAGS) -c ./classes/main_window/main_window_show_inventory.cpp $(GTKFLAGS)

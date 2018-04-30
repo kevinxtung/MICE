@@ -13,7 +13,7 @@ Gtk::Entry* entry = NULL;
 Gtk::Toolbar* toolbar = NULL;
 Gtk::Box* selections = NULL;
 
-Main_Window::Main_Window(Controller* controller) : m_controller(controller) {
+Main_Window::Main_Window(Controller* controller) : m_controller{controller}, m_isOwner{false}, m_isManager{false} {
 
     // GUI SETUP
     set_default_size(1366, 768); // 1366x768 Native

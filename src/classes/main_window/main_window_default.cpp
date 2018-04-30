@@ -1,13 +1,15 @@
 #include "main_window.h"
 
-#define X_EMPLOYEE 512
-#define Y_EMPLOYEE 128
+#define X_ORDERIMAGE 512
+#define Y_ORDERIMAGE 128
 
 void Main_Window::defaultScreen() {
     clean();
     mainbox->add(*box);
     box->add(*toolbar);
 
+    m_isOwner = false;
+    m_isManager = false;
 //    i_splash = Gtk::manage(new Gtk::Image{"splash.png"});
   //  box->add(*i_splash);
 
@@ -21,8 +23,8 @@ void Main_Window::defaultScreen() {
     
     int x, y, offsetX, offsetY;
     Gtk::Window::get_size(x, y);
-    offsetX = (x-X_EMPLOYEE)/2;
-    offsetY = (y-Y_EMPLOYEE)/3;
+    offsetX = (x-X_ORDERIMAGE)/2;
+    offsetY = (y-Y_ORDERIMAGE)/3;
 
     Gtk::Grid *grid = Gtk::manage(new Gtk::Grid());
     grid->set_column_spacing(offsetX);

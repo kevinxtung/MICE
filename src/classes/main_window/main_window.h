@@ -33,6 +33,8 @@ class Main_Window : public Gtk::Window {
 	void passwordScreen();
 		void employeeScreen();
 			void showOrdersScreen();
+			void showInventoryScreen();
+			void showRecordsScreen();
 
 	void orderScreen();
 		void showContainers();
@@ -63,6 +65,12 @@ class Main_Window : public Gtk::Window {
 			void generate();
 		void onSaveClick();
 		void onLoadClick();
+
+
+		void onAddCustomerClick();
+		void onAddServerClick();
+		void onAddManagerClick();
+		void onAddOwnerClick();
 
 		void keyboardSetup();
 		void numpadSetup(std::string type);
@@ -139,11 +147,18 @@ class Main_Window : public Gtk::Window {
 	Gtk::Image *i_employee;
 
 	// Back to Customer Mode
-	Gtk::ToolButton *b_back;
-	Gtk::Image *i_back;
+	//Gtk::ToolButton *b_back;
+	//Gtk::Image *i_back;
 
 	// Create Item
-	Gtk::ToolButton *b_createItem;
-	Gtk::Image *i_createItem;
+	//Gtk::ToolButton *b_createItem;
+	//Gtk::Image *i_createItem;
 
+	//************************//
+	//*PASSWORD FUNCTIONALITY*//
+	//************************//
+
+	// Privilege level variables
+	bool m_isOwner;
+	bool m_isManager;
 };
