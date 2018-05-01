@@ -103,6 +103,7 @@ void Main_Window::getEntryName() {
             entryScreen("Phone Number", "Format as XXX-XXX-XXXX", "NUMBER", 2);
         }
     } else {
+        flushEntry();
         entry->set_text("***INVALID NAME FORMAT***");
     }
 }
@@ -115,12 +116,13 @@ void Main_Window::getEntryNumber() {
     if (std::regex_match(number, regexNumber)) {
         g_number = number;
         switch(permission) {
-            case 0: {   // Customer
+            case 0: {   // Customer, calling a new entry from making an order
+                m_controller->getEmporium().addCustomer(Customer(g_name, g_number));
                 finishedOrderScreen();
                 break;
             }
-            case 1: {   // Customer
-                
+            case 1: {   // Customer, calling from employee's creation
+                m_controller->getEmporium().addCustomer(Customer(g_name, g_number));
                 showRecordsScreen();
                 break;
             }
@@ -128,11 +130,13 @@ void Main_Window::getEntryNumber() {
                 entryScreen("Please Enter Server's Salary", "Salary Is In Dollars Per Four Orders", "DOUBLE", 3);
                 break;
             }
-            case 3: {
+            case 3: {   // Manager Creation
+                m_controller->getEmporium().addManager(Manager(g_name, g_number));
                 showRecordsScreen();
                 break;
             }
-            case 4: {
+            case 4: {   // Owner Creation
+                m_controller->getEmporium().addOwner(Owner(g_name, g_number));
                 showRecordsScreen();
                 break;
             }
@@ -140,6 +144,7 @@ void Main_Window::getEntryNumber() {
                 defaultScreen();
         }
     } else {
+        flushEntry();
         entry->set_text("***INVALID NUMBER FORMAT***");
     }
 }
@@ -149,8 +154,11 @@ void Main_Window::getEntrySalary() {
     std::regex regexSalary{"[0-9]+[.][0-9][0-9]"};
     if (std::regex_match(salary, regexSalary)) {
         g_salary = std::stod(salary);
+        m_controller->getEmporium().addServer(Server(g_name, g_number, g_salary));
         showRecordsScreen();
-    } else {
+    }
+    else {
+        flushEntry();
         entry->set_text("***INVALID NUMBER FORMAT***");
     }
 }
