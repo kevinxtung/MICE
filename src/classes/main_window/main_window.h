@@ -10,12 +10,13 @@
 extern Gtk::Box* mainbox;
 extern Gtk::Box* box;
 extern Gtk::Box* keyboard;
-extern Gtk::Box* numpad;
 extern Gtk::Entry* entry;
 extern Gtk::Toolbar* toolbar;
 extern Gtk::Box* selections; // Used in orderScreen();
 extern int position; // Used in orderScreen();
 extern std::string input;
+extern std::string g_name;
+extern std::string g_number;
 
 class Main_Window : public Gtk::Window {
     public:
@@ -43,6 +44,10 @@ class Main_Window : public Gtk::Window {
 
 	void finalizeScreen();
 
+	void entryScreen(std::string prompt, std::string type, int function);
+	void entryScreen(std::string prompt, std::string description, std::string type, int function);
+	void getEntryName();
+	void getEntryNumber();
 	//***********//
 	//*CALLBACKS*//
 	//***********//
@@ -72,8 +77,7 @@ class Main_Window : public Gtk::Window {
 		void onAddManagerClick();
 		void onAddOwnerClick();
 
-		void keyboardSetup();
-		void numpadSetup(std::string type);
+		void keyboardSetup(std::string type);
 		void flushEntry();
 
 		void Q();
@@ -105,9 +109,12 @@ class Main_Window : public Gtk::Window {
 		void N();
 		void M();
 
+		void space();
+
 		void i0();
 		void i00();
 		void decimal();
+		void dash();
 		void i1();
 		void i2();
 		void i3();

@@ -5,7 +5,7 @@
 void Main_Window::passwordScreen() {
     clean();
     entry = Gtk::manage(new Gtk::Entry());
-    numpadSetup("INT");
+    keyboardSetup("INT");
 
     Gtk::Image* i_back = Gtk::manage(new Gtk::Image{"backbutton.png"});
     Gtk::Button* b_back = Gtk::manage(new Gtk::Button());
@@ -20,7 +20,7 @@ void Main_Window::passwordScreen() {
     Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
     grid->attach(*b_back, 0, 0, 1, 1);
     grid->attach(*entry, 1, 1, 3, 1);
-    grid->attach(*numpad, 1, 2, 3, 1);
+    grid->attach(*keyboard, 1, 2, 3, 1);
     grid->attach(*b_clear, 1, 3, 1, 1);
     grid->attach(*b_enter, 3, 3, 1, 1);
 
@@ -34,6 +34,7 @@ void Main_Window::verifyPassword() {
     try {
         code = std::stoi(entry->get_text());
     } catch (std::exception e) {
+        flushEntry();
         entry->set_text("***INVALID INPUT***");
         return;
     }
@@ -45,6 +46,7 @@ void Main_Window::verifyPassword() {
         case 00:      // Employee Privilege
             break;
         default:
+            flushEntry();
             entry->set_text("***INVALID PIN***");
             return;
     }

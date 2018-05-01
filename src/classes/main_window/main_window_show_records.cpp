@@ -77,19 +77,3 @@ void Main_Window::showRecordsScreen() {
     mainbox->add(*box);
     mainbox->show_all();
 }
-
-void Main_Window::onAddCustomerClick() {
-    
-}
-
-void Main_Window::onAddServerClick() {
-    
-}
-
-void Main_Window::onAddManagerClick() {
-    
-}
-
-void Main_Window::onAddOwnerClick() {
-    
-}
