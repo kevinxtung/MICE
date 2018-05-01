@@ -61,17 +61,14 @@ void Main_Window::showRecordsScreen() {
         b_addOwner->set_sensitive(false);
     }
 
-
     Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
     grid->attach(*b_back, 0, 0, 1, 1);
-    grid->attach(*b_save, 1, 1, 1, 1);
-    grid->attach(*b_load, 2, 1, 1, 1);
-    grid->attach(*b_addCustomer, 1, 2, 1, 1);
-    grid->attach(*b_addServer, 2, 2, 1, 1);
-    grid->attach(*b_addManager, 3, 2, 1, 1);
-    grid->attach(*b_addOwner, 4, 2, 1, 1);
-
-    
+    grid->attach(*b_addCustomer, 1, 1, 1, 1);
+    grid->attach(*b_addServer, 2, 1, 1, 1);
+    grid->attach(*b_addManager, 3, 1, 1, 1);
+    grid->attach(*b_addOwner, 4, 1, 1, 1);
+    grid->attach(*b_save, 1, 2, 1, 1);
+    grid->attach(*b_load, 2, 2, 1, 1);
 
     box->add(*grid);
     mainbox->add(*box);

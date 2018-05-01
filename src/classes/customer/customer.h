@@ -5,5 +5,5 @@
 
 class Customer : public Person {
     public:
-        Customer(std::string name, std::string ID, std::string phone);
+        Customer(std::string name, std::string phone);
 };

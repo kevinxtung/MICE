@@ -1,7 +1,7 @@
 #include "server.h"
 
-Server::Server(std::string name, std::string ID, std::string phone, double salary)
-    : Person(name, ID, phone), m_salary{salary} { }
+Server::Server(std::string name, std::string phone, double salary)
+    : Person(name, phone), m_salary{salary} { }
 
 void Server::gainOrder() {++m_ordersTaken;}
 void Server::setSalary(double salary) {m_salary = salary;}

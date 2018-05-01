@@ -5,7 +5,7 @@
 
 class Server : public Person {
     public:
-        Server(std::string name, std::string ID, std::string phone, double salary);
+        Server(std::string name, std::string phone, double salary);
         // Setters
         void gainOrder();
         void setSalary(double salary);

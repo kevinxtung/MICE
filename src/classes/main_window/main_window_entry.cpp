@@ -4,6 +4,8 @@
 
 std::string g_name;
 std::string g_number;
+double g_salary;
+int permission = -1;
 
 void Main_Window::entryScreen(std::string prompt, std::string type, int function) {
     clean();
@@ -13,7 +15,7 @@ void Main_Window::entryScreen(std::string prompt, std::string type, int function
     Gtk::Image* i_back = Gtk::manage(new Gtk::Image{"backbutton.png"});
     Gtk::Button* b_back = Gtk::manage(new Gtk::Button());
     b_back->set_image(*i_back);
-    b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::defaultScreen));
+    b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::finalizeScreen));
 
     Gtk::Button* b_clear = Gtk::manage(new Gtk::Button("CLEAR"));
     Gtk::Button* b_enter = Gtk::manage(new Gtk::Button("ENTER"));
@@ -62,6 +64,9 @@ void Main_Window::entryScreen(std::string prompt, std::string description, std::
         case 2:
             b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryNumber));
             break;
+        case 3:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntrySalary));
+            break;
     }
     
     Gtk::Label* l_prompt = Gtk::manage(new Gtk::Label(prompt));
@@ -84,10 +89,19 @@ void Main_Window::entryScreen(std::string prompt, std::string description, std::
 // REGEX
 void Main_Window::getEntryName() {
     std::string name = entry->get_text();
+    // REGEX HERE
     std::regex regexName{"[A-Z]+[ ][A-Z]+"};
     if (std::regex_match(name, regexName)) {
         g_name = name;
-        entryScreen("Number", "Format as XXX-XXX-XXXX", "NUMBER", 2);
+        if (permission == -1) {
+            std::cerr << "Something went wrong in main_window_entry.cpp(getEntryName())." << std::endl;
+        }
+        if (permission == 0) {
+            entryScreen("Please Enter Your Phone Number", "Format Your Number As XXX-XXX-XXXX", "NUMBER", 2);
+        } 
+        else {
+            entryScreen("Phone Number", "Format as XXX-XXX-XXXX", "NUMBER", 2);
+        }
     } else {
         entry->set_text("***INVALID NAME FORMAT***");
     }
@@ -96,12 +110,72 @@ void Main_Window::getEntryName() {
 // REGEX
 void Main_Window::getEntryNumber() {
     std::string number = entry->get_text();
+    // REGEX HERE
     std::regex regexNumber{"[0-9][0-9][0-9][-][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]"};
     if (std::regex_match(number, regexNumber)) {
         g_number = number;
-        defaultScreen();
+        switch(permission) {
+            case 0: {   // Customer
+                finishedOrderScreen();
+                break;
+            }
+            case 1: {   // Customer
+                
+                showRecordsScreen();
+                break;
+            }
+            case 2: {   // Server Specific Case
+                entryScreen("Please Enter Server's Salary", "Salary Is In Dollars Per Four Orders", "DOUBLE", 3);
+                break;
+            }
+            case 3: {
+                showRecordsScreen();
+                break;
+            }
+            case 4: {
+                showRecordsScreen();
+                break;
+            }
+            default:
+                defaultScreen();
+        }
     } else {
         entry->set_text("***INVALID NUMBER FORMAT***");
     }
 }
 
+void Main_Window::getEntrySalary() {
+    std::string salary = entry->get_text();
+    std::regex regexSalary{"[0-9]+[.][0-9][0-9]"};
+    if (std::regex_match(salary, regexSalary)) {
+        g_salary = std::stod(salary);
+        showRecordsScreen();
+    } else {
+        entry->set_text("***INVALID NUMBER FORMAT***");
+    }
+}
+
+void Main_Window::onNewCustomerClick() {
+    permission = 0;
+    entryScreen("Please Enter Your Full Name", "TEXT", 1);
+}
+
+void Main_Window::onAddCustomerClick() {
+    permission = 1;
+    entryScreen("Name", "Enter Customer's Full Name", "TEXT", 1);
+}
+
+void Main_Window::onAddServerClick() {
+    permission = 2;
+    entryScreen("Name", "Enter Server's Full Name", "TEXT", 1);
+}
+
+void Main_Window::onAddManagerClick() {
+    permission = 3;
+    entryScreen("Name", "Enter Manager's Full Name", "TEXT", 1);
+}
+
+void Main_Window::onAddOwnerClick() {
+    permission = 4;
+    entryScreen("Name", "Enter Owner's Full Name", "TEXT", 1);
+}

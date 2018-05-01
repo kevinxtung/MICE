@@ -15,8 +15,8 @@ extern Gtk::Toolbar* toolbar;
 extern Gtk::Box* selections; // Used in orderScreen();
 extern int position; // Used in orderScreen();
 extern std::string input;
-extern std::string g_name;
-extern std::string g_number;
+
+extern int activeEmployee;
 
 class Main_Window : public Gtk::Window {
     public:
@@ -41,13 +41,15 @@ class Main_Window : public Gtk::Window {
 		void showContainers();
 		void showScoops();
 		void showToppings();
-
 	void finalizeScreen();
+		void onNewCustomerClick();
+	void finishedOrderScreen();
 
 	void entryScreen(std::string prompt, std::string type, int function);
 	void entryScreen(std::string prompt, std::string description, std::string type, int function);
 	void getEntryName();
 	void getEntryNumber();
+	void getEntrySalary();
 	//***********//
 	//*CALLBACKS*//
 	//***********//

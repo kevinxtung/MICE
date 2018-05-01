@@ -5,5 +5,5 @@
 
 class Owner : public Person {
     public:
-        Owner(std::string name, std::string ID, std::string phone);
+        Owner(std::string name, std::string phone);
 };

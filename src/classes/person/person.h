@@ -4,7 +4,7 @@
 
 class Person { 
     public:
-			Person(std::string name, std::string ID, std::string phone);
+			Person(std::string name, std::string phone);
 			std::string getName();
 			std::string getPhone();
 			std::string getID();

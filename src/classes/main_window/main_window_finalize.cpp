@@ -43,6 +43,7 @@ void Main_Window::finalizeScreen() {
     //*********************//
     //*FINISH & PAY BUTTON*//
     //*********************//
+
     Gtk::Label* l_finishPay = Gtk::manage(new Gtk::Label("Customer ID"));
     Gtk::Button* b_finishPay = Gtk::manage(new Gtk::Button("Finish and Pay"));
     b_finishPay->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onFinishPayClick));
@@ -52,9 +53,7 @@ void Main_Window::finalizeScreen() {
     //*********************//
 
     Gtk::Button* b_newCustomer = Gtk::manage(new Gtk::Button("New Customer"));
-    b_newCustomer->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onAddCustomerClick));
-
-
+    b_newCustomer->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onNewCustomerClick));
 
     Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
     grid->attach(*confirmationBox, 0, 0, 1, 2);
@@ -76,22 +75,5 @@ void Main_Window::onFinishPayClick() {
     orders[top-1].setName(name);
     // if name != each customer try again
 
-    defaultScreen();
+    finishedOrderScreen();
 }
-
-
-    // DELETE
-    /*
-    for (auto i : servings) {
-        auto container = i.getContainer();
-        std::vector<Scoop> scoops = i.getScoops();
-        std::vector<Topping> toppings = i.getToppings();
-        
-        std::cout << container.getName() << container.getRetailPrice() << std::endl;
-        for (auto i : scoops) {
-            std::cout << i.getName() << i.getRetailPrice() << std::endl;
-        }
-        for (auto i : toppings) {
-            std::cout << i.getName() << i.getRetailPrice() << std::endl;
-        }
-    }*/

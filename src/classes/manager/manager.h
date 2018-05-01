@@ -5,5 +5,5 @@
 
 class Manager : public Person {
     public:
-        Manager(std::string name, std::string ID, std::string phone);
+        Manager(std::string name, std::string phone);
 };
