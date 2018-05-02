@@ -52,9 +52,6 @@ void Main_Window::onOrderClick() {
     orderScreen();
 }
 
-void Main_Window::onCreateItemClick() {
-    m_controller->execute(1);
-}
 
 void Main_Window::onEmployeeClick() {
     passwordScreen();

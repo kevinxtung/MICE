@@ -136,54 +136,8 @@ void Controller::execute(int cmd) {
 		    case 1:
 				m_emporium.addScoop(Scoop(name, description, rawCost, retailPrice));
 			break;
-		    case 2: {
-			int intAmount;
-			std::string amount;
-			Gtk::Dialog *dialog = new Gtk::Dialog();
-			dialog->set_title("Choose Topping Amount");
-			
-			Gtk::HBox b_amount;
-			Gtk::Label l_amount{"Amount: "};
-			l_amount.set_width_chars(15);
-			b_amount.pack_start(l_amount, Gtk::PACK_SHRINK);
-
-			Gtk::ComboBoxText c_amount;
-			c_amount.set_size_request(160);
-			c_amount.append("Light");
-			c_amount.append("Normal");
-			c_amount.append("Extra");
-			c_amount.append("Drenched");
-			b_amount.pack_start(c_amount, Gtk::PACK_SHRINK);
-			dialog->get_vbox()->pack_start(b_amount, Gtk::PACK_SHRINK);
-			
-			dialog->add_button("Set", 1);
-			dialog->show_all();
-			int result = dialog->run();
-			dialog->close();
-			while (Gtk::Main::events_pending()) {
-			    Gtk::Main::iteration();
-			}
-			if (result == 1) {
-			    intAmount = c_amount.get_active_row_number();
-			    switch(intAmount) {
-				case 0:
-				    amount = "Light";
-				    break;
-				case 1:
-				    amount = "Normal";
-				    break;
-				case 2:
-				    amount = "Extra";
-				    break;
-				case 3:
-				    amount = "Drenched";
-				    break;
-				default:
-				    break;
-			    }
-			    m_emporium.addTopping(Topping(name, description, rawCost, retailPrice, amount));
-			}
-		    }
+		    case 2: 
+			    m_emporium.addTopping(Topping(name, description, rawCost, retailPrice));
 			break;
 		    default:
 			break;
@@ -220,4 +174,8 @@ void Controller::execute(int cmd) {
 
 Emporium& Controller::getEmporium() {
 	return m_emporium;
+}
+
+Container Controller::container(std::string name, std::string description, double rawCost, double retailPrice, int maxScoops) {
+	return Container(name, description, rawCost, retailPrice, maxScoops);
 }

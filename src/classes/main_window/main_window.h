@@ -53,6 +53,12 @@ class Main_Window : public Gtk::Window {
 	void getEntryName();
 	void getEntryNumber();
 	void getEntrySalary();
+	void getEntryType();
+	void getEntryItemName();
+	void getEntryDescription();
+	void getEntryCost();
+	void getEntryPrice();
+	void getEntryMaxScoops();
 
 	std::string priceFix(std::string price);
 	//***********//

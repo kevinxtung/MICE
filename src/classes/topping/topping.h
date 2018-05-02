@@ -4,6 +4,10 @@
 
 class Topping : public Item {
     public:
+	Topping(std::string name, std::string description, double rawCost, double retailPrice)
+	: Item(name, description, rawCost, retailPrice), m_amount{"NORMAL"} { }
+	Topping(std::string name, std::string description, double rawCost, double retailPrice, int quantity)
+	: Item(name, description, rawCost, retailPrice, quantity), m_amount{"NORMAL"} { }
 	Topping(std::string name, std::string description, double rawCost, double retailPrice, std::string amount)
 	: Item(name, description, rawCost, retailPrice), m_amount{amount} { }
 	Topping(std::string name, std::string description, double rawCost, double retailPrice, int quantity, std::string amount)

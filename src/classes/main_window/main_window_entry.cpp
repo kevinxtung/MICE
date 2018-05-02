@@ -4,6 +4,12 @@
 
 std::string g_name;
 std::string g_number;
+std::string g_type;
+std::string g_itemName;
+std::string g_description;
+std::string g_cost;
+std::string g_price;
+std::string g_maxScoops;
 double g_salary;
 int permission = -1;
 
@@ -53,12 +59,16 @@ void Main_Window::entryScreen(std::string prompt, std::string description, std::
     Gtk::Button* b_back = Gtk::manage(new Gtk::Button());
     b_back->set_image(*i_back);
 
-    if (permission == 1) {
+    if (permission == 0) {
         b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::finalizeScreen));
     }
     else if (permission >= 1 && permission <= 4) {
         b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::showRecordsScreen));
-    } else {
+    } 
+    else if (permission == 6) {
+        b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::showInventoryScreen));
+    }
+    else {
         b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::defaultScreen));
     }
 
@@ -75,6 +85,24 @@ void Main_Window::entryScreen(std::string prompt, std::string description, std::
             break;
         case 3:
             b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntrySalary));
+            break;
+        case 4:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryType));
+            break;
+        case 5:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryItemName));
+            break;
+        case 6:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryDescription));
+            break;
+        case 7:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryCost));
+            break;
+        case 8:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryPrice));
+            break;
+        case 9:
+            b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryMaxScoops));
             break;
     }
     
@@ -179,6 +207,108 @@ void Main_Window::getEntrySalary() {
     }
 }
 
+void Main_Window::getEntryType() {
+    std::string type = entry->get_text();
+    if (type == "CONTAINER" || type == "SCOOP" || type == "TOPPING") {
+        g_type = type;
+        entry->set_text("***INVALID INPUT***");
+        entryScreen("Enter Name", "Words Only", "TEXT", 5);
+    }
+    else {
+        flushEntry();
+        g_type = "";
+        entry->set_text("***INVALID INPUT***");
+    }
+}
+
+void Main_Window::getEntryItemName() {
+    std::string itemName = entry->get_text();
+    // REGEX HERE
+    std::regex regexItemName{"([A-Z]+[ ])?[A-Z]+"};
+    if (std::regex_match(itemName, regexItemName)) {
+        g_itemName = itemName;
+        entryScreen("Enter Description", "Words Only", "TEXT", 6);
+    } else {
+        flushEntry();
+        g_itemName = "";
+        entry->set_text("***INVALID INPUT***");
+    }
+}
+
+void Main_Window::getEntryDescription() {
+    std::string description = entry->get_text();
+    // REGEX HERE
+    std::regex regexDescription{"([A-Z]+[ ])?[A-Z]+"};
+    if (std::regex_match(description, regexDescription)) {
+        g_description = description;
+        entryScreen("Enter Cost", "Cost is Per Unit", "DOUBLE", 7);
+    } else {
+        flushEntry();
+        g_description = "";
+        entry->set_text("***INVALID INPUT***");
+    }
+}
+
+void Main_Window::getEntryCost() {
+    std::string cost = entry->get_text();
+    // REGEX HERE
+    std::regex regexCost{"[0-9]+[.][0-9][0-9]"};
+    if (std::regex_match(cost, regexCost)) {
+        g_cost = cost;
+        entryScreen("Enter Price", "Price is Per Unit", "DOUBLE", 8);
+    } else {
+        flushEntry();
+        g_cost = "";
+        entry->set_text("***INVALID INPUT***");
+    }
+}
+
+void Main_Window::getEntryPrice() {
+    std::string price = entry->get_text();
+    // REGEX HERE
+    std::regex regexPrice{"[0-9]+[.][0-9][0-9]"};
+    if (std::regex_match(price, regexPrice)) {
+        g_price = price;
+        if (g_type == "CONTAINER") {
+            entryScreen("Enter Max Scoops", "Max Scoops per Container", "INT", 9);
+        }
+        else {
+            if (g_type == "SCOOP") {
+                m_controller->getEmporium().addScoop(Scoop(g_itemName, g_description, std::stod(g_cost), std::stod(g_price)));
+                g_type = g_itemName = g_description = g_cost = g_price = g_maxScoops = "";
+                showInventoryScreen();
+            }
+            else {
+                m_controller->getEmporium().addTopping(Topping(g_itemName, g_description, std::stod(g_cost), std::stod(g_price)));
+                g_type = g_itemName = g_description = g_cost = g_price = g_maxScoops = "";
+                showInventoryScreen();
+            }
+        }
+    }
+    else {
+        flushEntry();
+        g_price = "";
+        entry->set_text("***INVALID INPUT***");
+    }
+}
+
+void Main_Window::getEntryMaxScoops() {
+    std::string maxScoops = entry->get_text();
+    // REGEX HERE
+    std::regex regexMaxScoops{"[0-9]+"};
+    if (std::regex_match(maxScoops, regexMaxScoops)) {
+        g_maxScoops = maxScoops;
+        m_controller->getEmporium().addContainer(m_controller->container(g_itemName, g_description, std::stod(g_cost), std::stod(g_price), std::stoi(g_maxScoops)));
+        g_type = g_itemName = g_description = g_cost = g_price = g_maxScoops = "";
+        showInventoryScreen();
+    }
+    else {
+        flushEntry();
+        g_maxScoops = "";
+        entry->set_text("***INVALID INPUT***");
+    }
+}
+
 void Main_Window::onNewCustomerClick() {
     permission = 0;
     entryScreen("Please Enter Your First and Last Name", "TEXT", 1);
@@ -204,3 +334,7 @@ void Main_Window::onAddOwnerClick() {
     entryScreen("Name", "Enter Owner's First and Last Name", "TEXT", 1);
 }
 
+void Main_Window::onCreateItemClick() {
+    permission = 6;
+    entryScreen("Item Type", "Valid Types: CONTAINER | SCOOP | TOPPING", "TEXT", 4);
+}

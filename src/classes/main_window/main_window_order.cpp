@@ -10,6 +10,8 @@ Order order;
 const double X_PAD = 20.0;
 const double Y_PAD = 20.0;
 
+bool full; // For determining container fullness.
+int amount; // For determining topping amount.
 void Main_Window::orderScreen() {
     clean();
     Gdk::RGBA color;
@@ -132,6 +134,12 @@ void Main_Window::showScoops() {
     for (auto i : m_controller->getEmporium().getScoops()) {
         Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button(i.getName()));
         b_styleButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
+        if (full) {
+            b_styleButton->set_sensitive(false);
+        }
+        else {
+            b_styleButton->set_sensitive(true);
+        }
         styleButtons->pack_start(*b_styleButton, Gtk::PACK_SHRINK, 0);
         x++;
     }
@@ -186,13 +194,27 @@ void Main_Window::onOrderDynamicClick(int button) {
     if (button < 200000) {      // Container Callback
         //std::vector<Container::Container> containers = m_controller->getEmporium().getContainers();
         serving.setContainer((m_controller->getEmporium().getContainers())[button-100000]);
+        while (serving.getScoops().size() > 0) {
+            serving.removeScoop();
+        }
+        full = false;
     }
     else if (button < 300000){  // Scoop Callback
         std::vector<Scoop> scoops = m_controller->getEmporium().getScoops();
+        // Check to see the container is not full
         serving.addScoop(scoops[button-200000]);
+        if (serving.getScoops().size() >= serving.getContainer().getMaxScoops()) {
+            full = true;
+            orderScreen(); // Update the order screen.
+        }
+        else {
+            full = false;
+            orderScreen();
+        }
     }
     else {                      // Topping Callback
         std::vector<Topping> toppings = m_controller->getEmporium().getToppings();
+        //toppings[button-300000].setAmount()
         serving.addTopping(toppings[button-300000]);
     }
 }
@@ -234,6 +256,7 @@ void Main_Window::flushServing() {
     while (!serving.getScoops().empty()) {
         serving.removeScoop();
     }
+    full = false;
     while (!serving.getToppings().empty()) {
         serving.removeTopping();
     }

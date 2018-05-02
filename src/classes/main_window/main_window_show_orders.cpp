@@ -48,6 +48,11 @@ void Main_Window::showOrdersScreen() {
                 containerText->set_text(text.str());
                 orderBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
             }
+
+            //*****************************//
+            //*BUTTONS FOR FILL/PAY/CANCEL*//
+            //*****************************//
+
             Gtk::Button* b_fillButton;
             Gtk::Button* b_payButton;
             Gtk::Button* b_cancelButton;
@@ -69,11 +74,16 @@ void Main_Window::showOrdersScreen() {
             Gtk::Label* l_orderID = Gtk::manage(new Gtk::Label(orderIDText));
             orderBox->pack_start(*l_orderID, Gtk::PACK_SHRINK, 0);
             Gtk::Label* l_orderPrice;
+            Gtk::Label* l_orderName;
             if (statusFlag == "FILLED") {
                 std::string orderPriceText = "PRICE: $";
                 orderPriceText += priceFix(std::to_string(it_order.getPrice()));
                 l_orderPrice = Gtk::manage(new Gtk::Label(orderPriceText));
                 orderBox->pack_start(*l_orderPrice, Gtk::PACK_SHRINK, 0);
+                std::string orderNameText = "NAME: ";
+                orderNameText += it_order.getName();
+                l_orderName = Gtk::manage(new Gtk::Label(orderNameText));
+                orderBox->pack_start(*l_orderName, Gtk::PACK_SHRINK, 0);
             };
             grid->attach(*orderBox, x, y, 1, 1);
 
@@ -114,14 +124,30 @@ void Main_Window::showOrdersScreen() {
     mainbox->show_all();
 }
 
+
+    //****************************//
+    //*PAY/ORDER/CANCEL CALLBACKS*//
+    //****************************//
+
 // Looks to fill the order with corresponding ID
 void Main_Window::onOrderFillClick(unsigned int ID) {
     std::vector<Order>& orders = m_controller->getEmporium().getOrders();
     for (int x = 0; x < orders.size(); x++) {
         if (orders[x].getID() == ID) {
             orders[x].fill();
-            showOrdersScreen();
-            return;
+
+            // Once filled, credit the employee who filled it.
+            std::vector<Server>& servers = m_controller->getEmporium().getServers();
+            for (int x = 0; x < servers.size(); x++) {
+                if (servers[x].getID() == activeEmployee) {
+                    servers[x].gainOrder();
+                    if (servers[x].getOrders() % 4 == 0) {
+                        m_controller->getEmporium().subBalance(servers[x].getSalary());
+                    }
+                    showOrdersScreen();
+                    return;
+                }
+            }
         }
     }
 }
@@ -132,6 +158,8 @@ void Main_Window::onOrderPayClick(unsigned int ID) {
     for (int x = 0; x < orders.size(); x++) {
         if (orders[x].getID() == ID) {
             orders[x].pay();
+            // Once paid, add the amount to the balance of the emporium.
+            m_controller->getEmporium().addBalance(orders[x].getPrice());
             showOrdersScreen();
             return;
         }
