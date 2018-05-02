@@ -109,6 +109,7 @@ void Main_Window::showContainers() {
     for (auto i : m_controller->getEmporium().getContainers()) {
         Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button(i.getName()));
         b_styleButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
+        b_styleButton->set_image(*(i.getImage()));
         styleButtons->pack_start(*b_styleButton, Gtk::PACK_SHRINK, 0);
         x++;
     } 
@@ -134,6 +135,7 @@ void Main_Window::showScoops() {
     for (auto i : m_controller->getEmporium().getScoops()) {
         Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button(i.getName()));
         b_styleButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
+        b_styleButton->set_image(*(i.getImage()));
         if (full) {
             b_styleButton->set_sensitive(false);
         }
@@ -165,6 +167,8 @@ void Main_Window::showToppings() {
     for (auto i : m_controller->getEmporium().getToppings()) {
         Gtk::Button *b_toppingButton = Gtk::manage(new Gtk::Button(i.getName()));
         b_toppingButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
+        b_toppingButton->set_image(*(i.getImage()));
+
         toppingButtons->pack_start(*b_toppingButton, Gtk::PACK_SHRINK, 0);
         x++;
     } 

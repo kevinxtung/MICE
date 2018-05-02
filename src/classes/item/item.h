@@ -10,7 +10,7 @@ class Item {
 		double m_rawCost;
 		double m_retailPrice;
 		int m_quantity;
-		//Gtk::Image* m_image;
+		Gtk::Image* m_image;
     public:
 		Item(std::string name, std::string description, double rawCost, double retailPrice);
 		Item(std::string name, std::string description, double rawCost, double retailPrice, int quantity);
@@ -24,6 +24,6 @@ class Item {
 		double getRawCost();
 		double getRetailPrice();
 		int getQuantity();
-
-		bool isInStock();	
+		bool isInStock();
+		Gtk::Image* getImage();	
 };
