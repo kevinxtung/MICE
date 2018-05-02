@@ -10,6 +10,7 @@ void Main_Window::defaultScreen() {
 
     m_isOwner = false;
     m_isManager = false;
+    activeEmployee = "";
 //    i_splash = Gtk::manage(new Gtk::Image{"splash.png"});
   //  box->add(*i_splash);
 

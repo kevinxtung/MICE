@@ -11,6 +11,7 @@ Gtk::Box* keyboard = NULL;
 Gtk::Entry* entry = NULL;
 Gtk::Toolbar* toolbar = NULL;
 Gtk::Box* selections = NULL;
+std::string activeEmployee;
 
 Main_Window::Main_Window(Controller* controller) : m_controller{controller}, m_isOwner{false}, m_isManager{false} {
 

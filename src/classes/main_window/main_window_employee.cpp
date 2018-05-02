@@ -26,6 +26,10 @@ void Main_Window::employeeScreen() {
     b_showRecords->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::showRecordsScreen));
     b_showRecords->set_image(*i_showRecords);
 
+    std::string activeEmployeeText = "Active Employee ID: ";
+    activeEmployeeText += activeEmployee;
+    Gtk::Label* l_activeEmployee = Gtk::manage(new Gtk::Label(activeEmployeeText));
+
     int x, y, offsetX, offsetY;
     Gtk::Window::get_size(x, y);
     offsetX = (x-X_EMPLOYEE)/3;
@@ -38,6 +42,7 @@ void Main_Window::employeeScreen() {
     grid->attach(*b_showOrders, 1, 1, 1, 1);
     grid->attach(*b_showInventory, 1, 2, 1, 1);
     grid->attach(*b_showRecords, 1, 3, 1, 1);
+    grid->attach(*l_activeEmployee, 2, 4, 1, 1);
 
     box->add(*grid);
     mainbox->add(*box);

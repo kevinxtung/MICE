@@ -39,17 +39,13 @@ void Main_Window::showOrdersScreen() {
                 std::stringstream text;
                 text << "CONTAINER" << std::endl;
                 text << "\t" << container.getName() << std::endl;
-                //containerText->set_text(text.str());
                 text << "SCOOPS" << std::endl;
                 for (auto i : scoops) {
                     text << "\t" << i.getName() << std::endl;
-                    //containerText->set_text(text.str());
                 }
                 text << "TOPPINGS" << std::endl;
                 for (auto i : toppings) {
                     text << "\t" << i.getName() << ": " << i.getAmount() << std::endl;
-                    //containerText->set_text(text.str());
-                    //orderBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
                 }
                 text << std::endl << std::endl;
                 containerText->set_text(text.str());
@@ -107,6 +103,7 @@ void Main_Window::showOrdersScreen() {
     mainbox->show_all();
 }
 
+// Looks to fill the order with corresponding ID
 void Main_Window::onOrderFillClick(unsigned int ID) {
     std::vector<Order>& orders = m_controller->getEmporium().getOrders();
     for (int x = 0; x < orders.size(); x++) {
@@ -118,6 +115,7 @@ void Main_Window::onOrderFillClick(unsigned int ID) {
     }
 }
 
+// Looks to pay the order with corresponding ID
 void Main_Window::onOrderPayClick(unsigned int ID) {
     std::vector<Order>& orders = m_controller->getEmporium().getOrders();
     for (int x = 0; x < orders.size(); x++) {

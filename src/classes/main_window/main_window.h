@@ -16,7 +16,7 @@ extern Gtk::Box* selections; // Used in orderScreen();
 extern int position; // Used in orderScreen();
 extern std::string input;
 
-extern int activeEmployee;
+extern std::string activeEmployee;
 
 class Main_Window : public Gtk::Window {
     public:
