@@ -274,12 +274,12 @@ void Main_Window::getEntryPrice() {
         }
         else {
             if (g_type == "SCOOP") {
-                m_controller->getEmporium().addScoop(Scoop(g_itemName, g_description, std::stod(g_cost), std::stod(g_price)));
+                m_controller->getEmporium().addScoop(Scoop(g_itemName, g_description, std::stod(g_cost), std::stod(g_price), 0));
                 g_type = g_itemName = g_description = g_cost = g_price = g_maxScoops = "";
                 showInventoryScreen();
             }
             else {
-                m_controller->getEmporium().addTopping(Topping(g_itemName, g_description, std::stod(g_cost), std::stod(g_price)));
+                m_controller->getEmporium().addTopping(Topping(g_itemName, g_description, std::stod(g_cost), std::stod(g_price), 0));
                 g_type = g_itemName = g_description = g_cost = g_price = g_maxScoops = "";
                 showInventoryScreen();
             }
@@ -298,7 +298,7 @@ void Main_Window::getEntryMaxScoops() {
     std::regex regexMaxScoops{"[0-9]+"};
     if (std::regex_match(maxScoops, regexMaxScoops)) {
         g_maxScoops = maxScoops;
-        m_controller->getEmporium().addContainer(m_controller->container(g_itemName, g_description, std::stod(g_cost), std::stod(g_price), std::stoi(g_maxScoops)));
+        m_controller->getEmporium().addContainer(m_controller->container(g_itemName, g_description, std::stod(g_cost), std::stod(g_price), std::stoi(g_maxScoops), 0));
         g_type = g_itemName = g_description = g_cost = g_price = g_maxScoops = "";
         showInventoryScreen();
     }

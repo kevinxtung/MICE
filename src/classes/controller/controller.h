@@ -15,7 +15,7 @@ class Controller {
 		enum tokenCode {eBalance, eContainer, eScoop, eTopping, eID, eCustomer, eServer, eManager, eOwner, eOrder, eServing};
 		tokenCode hashToken(std::string token);
 		Emporium& getEmporium();
-		Container container(std::string name, std::string description, double rawCost, double retailPrice, int maxScoops);
+		Container container(std::string name, std::string description, double rawCost, double retailPrice, int quantity, int maxScoops);
 
     private:
 		Emporium& m_emporium;

@@ -157,12 +157,12 @@ void Controller::execute(int cmd) {
 		break;
 	}
 	case 66: {
-		m_emporium.addContainer(Container("Waffle Cone", "A waffle cone.", 0.75, 1.00, 3));
-		m_emporium.addContainer(Container("Cup", "A wax coated cup.", 0.15, 0.20, 4));
-		m_emporium.addScoop(Scoop("Vanilla", "Plain vanilla.", 0.49, 0.80));
-		m_emporium.addScoop(Scoop("Mint Chocolate Chip", "Deliciously minty.", 0.55, 0.80));
-		m_emporium.addTopping(Topping("Peanuts", "Chopped nuts!", 0.50, 0.75, "Normal"));
-		m_emporium.addTopping(Topping("Hot Fudge", "Creamy and fattening.", 0.30, 0.75, "Normal"));
+		m_emporium.addContainer(Container("Waffle Cone", "A waffle cone.", 0.75, 1.00, 0, 3));
+		m_emporium.addContainer(Container("Cup", "A wax coated cup.", 0.15, 0.20, 0, 4));
+		m_emporium.addScoop(Scoop("Vanilla", "Plain vanilla.", 0.49, 0.80, 0));
+		m_emporium.addScoop(Scoop("Mint Chocolate Chip", "Deliciously minty.", 0.55, 0.80, 0));
+		m_emporium.addTopping(Topping("Peanuts", "Chopped nuts!", 0.50, 0.75, 0, "Normal"));
+		m_emporium.addTopping(Topping("Hot Fudge", "Creamy and fattening.", 0.30, 0.75, 0, "Normal"));
 		break;
 	}
 	default:
@@ -176,6 +176,6 @@ Emporium& Controller::getEmporium() {
 	return m_emporium;
 }
 
-Container Controller::container(std::string name, std::string description, double rawCost, double retailPrice, int maxScoops) {
-	return Container(name, description, rawCost, retailPrice, maxScoops);
+Container Controller::container(std::string name, std::string description, double rawCost, double retailPrice, int maxScoops, int quantity) {
+	return Container(name, description, rawCost, retailPrice, quantity, maxScoops);
 }

@@ -107,7 +107,7 @@ void Main_Window::showContainers() {
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
     int x = 100000; // Containers start at 100000
     for (auto i : m_controller->getEmporium().getContainers()) {
-        Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button(i.getName()));
+        Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button());
         b_styleButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
         b_styleButton->set_image(*(i.getImage()));
         styleButtons->pack_start(*b_styleButton, Gtk::PACK_SHRINK, 0);
@@ -133,7 +133,7 @@ void Main_Window::showScoops() {
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
     int x = 200000; // Scoops start at 200000
     for (auto i : m_controller->getEmporium().getScoops()) {
-        Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button(i.getName()));
+        Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button());
         b_styleButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
         b_styleButton->set_image(*(i.getImage()));
         if (full) {
@@ -165,7 +165,7 @@ void Main_Window::showToppings() {
     Gtk::ButtonBox *toppingButtons = Gtk::manage(new Gtk::ButtonBox());
     int x = 300000; // Toppings start at 300000
     for (auto i : m_controller->getEmporium().getToppings()) {
-        Gtk::Button *b_toppingButton = Gtk::manage(new Gtk::Button(i.getName()));
+        Gtk::Button *b_toppingButton = Gtk::manage(new Gtk::Button());
         b_toppingButton->signal_clicked().connect(sigc::bind<int>(sigc::mem_fun(*this, &Main_Window::onOrderDynamicClick), x));
         b_toppingButton->set_image(*(i.getImage()));
 
