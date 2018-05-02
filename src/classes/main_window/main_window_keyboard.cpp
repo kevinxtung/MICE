@@ -131,6 +131,8 @@ void Main_Window::keyboardSetup(std::string type) {
         Gtk::Button* b_00 = Gtk::manage(new Gtk::Button("00"));
         Gtk::Button* b_decimal = Gtk::manage(new Gtk::Button("."));
         Gtk::Button* b_dash = Gtk::manage(new Gtk::Button("-"));
+        Gtk::Button* b_BKSP = Gtk::manage(new Gtk::Button("<"));
+
 
         Gtk::Button* b_1 = Gtk::manage(new Gtk::Button("1"));
         Gtk::Button* b_2 = Gtk::manage(new Gtk::Button("2"));
@@ -148,6 +150,8 @@ void Main_Window::keyboardSetup(std::string type) {
         b_00->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::i00));
         b_decimal->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::decimal));
         b_dash->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::dash));
+        b_BKSP->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::BKSP));
+
 
         b_1->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::i1));
         b_2->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::i2));
@@ -176,9 +180,7 @@ void Main_Window::keyboardSetup(std::string type) {
         bottomRow->pack_start(*b_0, Gtk::PACK_SHRINK, 0);
         bottomRow->pack_start(*b_00, Gtk::PACK_SHRINK, 0);
         if (type == "INT") {
-            bottomRow->pack_start(*b_decimal, Gtk::PACK_SHRINK, 0);
-            b_decimal->set_sensitive(false);
-            b_decimal->set_opacity(0.0);
+            bottomRow->pack_start(*b_BKSP, Gtk::PACK_SHRINK, 0);
         }
         if (type == "NUMBER") {
             bottomRow->pack_start(*b_dash, Gtk::PACK_SHRINK, 0);

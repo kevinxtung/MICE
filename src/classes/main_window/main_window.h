@@ -68,6 +68,8 @@ class Main_Window : public Gtk::Window {
 	void verifyPassword();
 
 	void onEmployeeClick();
+		void onOrderFillClick(unsigned int ID);
+
 		void onCreateItemClick();
 			void generate();
 		void onSaveClick();
