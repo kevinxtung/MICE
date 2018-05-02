@@ -19,6 +19,7 @@ extern std::string input;
 extern std::string activeEmployee;
 extern int permission;
 extern std::string g_name;
+extern unsigned int top;
 
 class Main_Window : public Gtk::Window {
     public:

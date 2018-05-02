@@ -23,7 +23,6 @@ void Main_Window::showOrdersScreen() {
     }
     int x = 2;
     int y = 2;
-
     for (auto it_order : orders) {
         Gtk::Box* orderBox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
         if (it_order.getStatus() == statusFlag) {
@@ -68,16 +67,16 @@ void Main_Window::showOrdersScreen() {
             std::string orderIDText = "ORDER ID: ";
             orderIDText += std::to_string(it_order.getID());
             Gtk::Label* l_orderID = Gtk::manage(new Gtk::Label(orderIDText));
+            orderBox->pack_start(*l_orderID, Gtk::PACK_SHRINK, 0);
             Gtk::Label* l_orderPrice;
             if (statusFlag == "FILLED") {
                 std::string orderPriceText = "PRICE: $";
                 orderPriceText += priceFix(std::to_string(it_order.getPrice()));
                 l_orderPrice = Gtk::manage(new Gtk::Label(orderPriceText));
-            }
-
-            orderBox->pack_start(*l_orderID, Gtk::PACK_SHRINK, 0);
-            orderBox->pack_start(*l_orderPrice, Gtk::PACK_SHRINK, 0);
+                orderBox->pack_start(*l_orderPrice, Gtk::PACK_SHRINK, 0);
+            };
             grid->attach(*orderBox, x, y, 1, 1);
+
             if (x++-1 % 6 == 0) { // Create a grid arrangement, moving an order to the next row every 5 elemnts
                 y++;
             }

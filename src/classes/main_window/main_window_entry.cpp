@@ -131,6 +131,9 @@ void Main_Window::getEntryNumber() {
         switch(permission) {
             case 0: {   // Customer, calling a new entry from making an order
                 m_controller->getEmporium().addCustomer(Customer(g_name, g_number));
+                std::vector<Order>& orders = m_controller->getEmporium().getOrders();
+                orders[top-1].recieve();
+                orders[top-1].setName(g_name);
                 finishedOrderScreen();
                 break;
             }
