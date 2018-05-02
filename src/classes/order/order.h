@@ -16,6 +16,8 @@ class Order {
 		std::string getStatus();
 		unsigned int getID();
 
+		double getPrice();
+
 		// Setters
 		void setName(std::string name);
 		void setID(unsigned int ID);

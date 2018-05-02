@@ -17,6 +17,8 @@ extern int position; // Used in orderScreen();
 extern std::string input;
 
 extern std::string activeEmployee;
+extern int permission;
+extern std::string g_name;
 
 class Main_Window : public Gtk::Window {
     public:
@@ -50,6 +52,8 @@ class Main_Window : public Gtk::Window {
 	void getEntryName();
 	void getEntryNumber();
 	void getEntrySalary();
+
+	std::string priceFix(std::string price);
 	//***********//
 	//*CALLBACKS*//
 	//***********//
@@ -70,6 +74,8 @@ class Main_Window : public Gtk::Window {
 	void onEmployeeClick();
 		void onOrderFillClick(unsigned int ID);
 		void onOrderPayClick(unsigned int ID);
+		void onOrderCancelClick(unsigned int ID);
+
 
 		void onCreateItemClick();
 			void generate();

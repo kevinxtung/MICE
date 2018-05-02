@@ -1,4 +1,5 @@
 #include "main_window.h"
+#include <regex>
 
 //****************//
 //*GUI MANAGEMENT*//
@@ -61,4 +62,18 @@ void Main_Window::onEmployeeClick() {
 
 void Main_Window::generate() {
     m_controller->execute(66);
+}
+
+std::string Main_Window::priceFix(std::string price) {
+    std::regex regexPrice{"[0-9]+[.][0-9][0-9]"};
+    std::regex regexDecimal{"[.]"};
+    if (!std::regex_match(price, regexPrice)) {
+        if (std::regex_search(price, regexDecimal)) {
+            price += '0';
+        }
+        else {
+            price += ".00";
+        }
+    }
+    return price;
 }

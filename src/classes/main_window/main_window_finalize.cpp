@@ -19,16 +19,19 @@ void Main_Window::finalizeScreen() {
         std::vector<Topping> toppings = i.getToppings();
         Gtk::Label* containerText = Gtk::manage(new Gtk::Label());
         std::stringstream text;
-        text << container.getName() << ": " << container.getRetailPrice() << std::endl;
+
+        
+
+        text << container.getName() << ": $" << priceFix(std::to_string(container.getRetailPrice())) << std::endl;
         containerText->set_text(text.str());
         confirmationBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
         for (auto i : scoops) {
-            text << i.getName() << " Scoop: " << i.getRetailPrice() << std::endl;
+            text << i.getName() << " Scoop: $" << priceFix(std::to_string(i.getRetailPrice())) << std::endl;
             containerText->set_text(text.str());
             confirmationBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
         }
         for (auto i : toppings) {
-            text << i.getName() << " Topping: " << i.getRetailPrice() << std::endl;
+            text << i.getName() << " Topping: $" << priceFix(std::to_string(i.getRetailPrice())) << std::endl;
             containerText->set_text(text.str());
             confirmationBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
         }
@@ -69,11 +72,24 @@ void Main_Window::finalizeScreen() {
 }
 
 void Main_Window::onFinishPayClick() {
-    std::vector<Order>& orders = m_controller->getEmporium().getOrders();
-    orders[top-1].recieve();
-    std::string name = entry->get_text();
-    orders[top-1].setName(name);
-    // if name != each customer try again
-
-    finishedOrderScreen();
+    permission = 5;
+    getEntryName(); // Get the name in the box and put it into g_name.
+    
+    // Don't bother checking if the name wasn't valid.
+    if (entry->get_text() == "***INVALID NAME FORMAT***") {
+        return;
+    }
+    // Now check to see if there is a corresponding customer.
+    std::vector<Customer>& customers = m_controller->getEmporium().getCustomers();
+    for (int x = 0; x < customers.size(); x++) {
+        if (customers[x].getName() == g_name) {
+            std::vector<Order>& orders = m_controller->getEmporium().getOrders();
+            orders[top-1].recieve();
+            orders[top-1].setName(g_name);
+            finishedOrderScreen();
+            return;
+        }
+    }
+    // If we get here, then no customer had a matching name.
+    entry->set_text("***CUSTOMER NOT FOUND***");
 }

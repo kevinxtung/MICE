@@ -52,11 +52,20 @@ void Main_Window::entryScreen(std::string prompt, std::string description, std::
     Gtk::Image* i_back = Gtk::manage(new Gtk::Image{"backbutton.png"});
     Gtk::Button* b_back = Gtk::manage(new Gtk::Button());
     b_back->set_image(*i_back);
-    b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::defaultScreen));
+
+    if (permission == 1) {
+        b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::finalizeScreen));
+    }
+    else if (permission >= 1 && permission <= 4) {
+        b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::showRecordsScreen));
+    } else {
+        b_back->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::defaultScreen));
+    }
 
     Gtk::Button* b_clear = Gtk::manage(new Gtk::Button("CLEAR"));
     Gtk::Button* b_enter = Gtk::manage(new Gtk::Button("ENTER"));
     b_clear->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::flushEntry));
+    
     switch(function) {
         case 1:
             b_enter->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::getEntryName));
@@ -98,12 +107,16 @@ void Main_Window::getEntryName() {
         }
         if (permission == 0) {
             entryScreen("Please Enter Your Phone Number", "Format Your Number As XXX-XXX-XXXX", "NUMBER", 2);
-        } 
+        }
+        if (permission == 5) { // From onFinishPayClick in finalize
+            return; // Don't do anything. We just want the name.
+        }
         else {
             entryScreen("Phone Number", "Format as XXX-XXX-XXXX", "NUMBER", 2);
         }
     } else {
         flushEntry();
+        g_name = "";
         entry->set_text("***INVALID NAME FORMAT***");
     }
 }
@@ -165,25 +178,26 @@ void Main_Window::getEntrySalary() {
 
 void Main_Window::onNewCustomerClick() {
     permission = 0;
-    entryScreen("Please Enter Your Full Name", "TEXT", 1);
+    entryScreen("Please Enter Your First and Last Name", "TEXT", 1);
 }
 
 void Main_Window::onAddCustomerClick() {
     permission = 1;
-    entryScreen("Name", "Enter Customer's Full Name", "TEXT", 1);
+    entryScreen("Name", "Enter Customer's First and Last Name", "TEXT", 1);
 }
 
 void Main_Window::onAddServerClick() {
     permission = 2;
-    entryScreen("Name", "Enter Server's Full Name", "TEXT", 1);
+    entryScreen("Name", "Enter Server's First and Last Name", "TEXT", 1);
 }
 
 void Main_Window::onAddManagerClick() {
     permission = 3;
-    entryScreen("Name", "Enter Manager's Full Name", "TEXT", 1);
+    entryScreen("Name", "Enter Manager's First and Last Name", "TEXT", 1);
 }
 
 void Main_Window::onAddOwnerClick() {
     permission = 4;
-    entryScreen("Name", "Enter Owner's Full Name", "TEXT", 1);
+    entryScreen("Name", "Enter Owner's First and Last Name", "TEXT", 1);
 }
+
