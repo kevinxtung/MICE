@@ -16,11 +16,19 @@ void Main_Window::showOrdersScreen() {
     std::vector<Order> orders = m_controller->getEmporium().getOrders();
     std::vector<Serving> servings;
     std::string name;
+    std::string statusFlag;
+    if (m_isManager) {  // We want the manager to pay filled orders
+        statusFlag = "FILLED";
+    }
+    else {              // We want the server to fill unfilled orders
+        statusFlag = "UNFILLED";
+    }
     int x = 2;
     int y = 2;
+
     for (auto it_order : orders) {
         Gtk::Box* orderBox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
-        if (it_order.getStatus() == "UNFILLED") {
+        if (it_order.getStatus() == statusFlag) {
             servings = it_order.getServings();
             name = it_order.getName();
             for (auto i : servings) {
@@ -47,12 +55,22 @@ void Main_Window::showOrdersScreen() {
                 containerText->set_text(text.str());
                 orderBox->pack_start(*containerText, Gtk::PACK_SHRINK, 0);
             }
-            Gtk::Button *b_fillButton = Gtk::manage(new Gtk::Button("Fill Order"));
-            b_fillButton->signal_clicked().connect(sigc::bind<unsigned int>(sigc::mem_fun(*this, &Main_Window::onOrderFillClick), it_order.getID()));
-            
+            Gtk::Button* b_fillButton;
+            if (m_isManager) {  // A manager will pay orders
+                b_fillButton = Gtk::manage(new Gtk::Button("Mark as Paid"));
+                b_fillButton->signal_clicked().connect(sigc::bind<unsigned int>(sigc::mem_fun(*this, &Main_Window::onOrderPayClick), it_order.getID()));
+            }
+            else {              // A server will fill orders
+                b_fillButton = Gtk::manage(new Gtk::Button("Fill Order"));
+                b_fillButton->signal_clicked().connect(sigc::bind<unsigned int>(sigc::mem_fun(*this, &Main_Window::onOrderFillClick), it_order.getID()));
+            }
             orderBox->pack_start(*b_fillButton, Gtk::PACK_SHRINK, 0);
+            std::string orderIDText = "ORDER ID: ";
+            orderIDText += std::to_string(it_order.getID());
+            Gtk::Label* l_orderID = Gtk::manage(new Gtk::Label(orderIDText));
+            orderBox->pack_start(*l_orderID, Gtk::PACK_SHRINK, 0);
             grid->attach(*orderBox, x, y, 1, 1);
-            if (x++-1 % 6 == 0) {
+            if (x++-1 % 6 == 0) { // Create a grid arrangement, moving an order to the next row every 5 elemnts
                 y++;
             }
             //allOrders->pack_start(*orderBox, Gtk::PACK_SHRINK, 0);
@@ -94,6 +112,18 @@ void Main_Window::onOrderFillClick(unsigned int ID) {
     for (int x = 0; x < orders.size(); x++) {
         if (orders[x].getID() == ID) {
             orders[x].fill();
+            showOrdersScreen();
+            return;
+        }
+    }
+}
+
+void Main_Window::onOrderPayClick(unsigned int ID) {
+    std::vector<Order>& orders = m_controller->getEmporium().getOrders();
+    for (int x = 0; x < orders.size(); x++) {
+        if (orders[x].getID() == ID) {
+            orders[x].pay();
+            showOrdersScreen();
             return;
         }
     }
