@@ -47,24 +47,51 @@ void Main_Window::finalizeScreen() {
     //*FINISH & PAY BUTTON*//
     //*********************//
 
-    Gtk::Label* l_finishPay = Gtk::manage(new Gtk::Label("Customer ID"));
-    Gtk::Button* b_finishPay = Gtk::manage(new Gtk::Button("Finish and Pay"));
+    Gtk::Label* l_finishPay = Gtk::manage(new Gtk::Label());
+    l_finishPay->set_markup("<span font='20'>Please Enter First &amp; Last Name</span>");
+
+    Gtk::Image* i_finishPay = Gtk::manage(new Gtk::Image("submitorder.png"));
+    Gtk::Button* b_finishPay = Gtk::manage(new Gtk::Button());
+    b_finishPay->set_image(*i_finishPay);
     b_finishPay->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onFinishPayClick));
 
     //*********************//
     //*NEW CUSTOMER BUTTON*//
     //*********************//
 
-    Gtk::Button* b_newCustomer = Gtk::manage(new Gtk::Button("New Customer"));
-    b_newCustomer->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onNewCustomerClick));
+    Gtk::Label* l_newCustomer = Gtk::manage(new Gtk::Label());
+    l_newCustomer->set_markup("<span font='20'>Not Registered with MICE?</span>");
 
-    Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
-    grid->attach(*confirmationBox, 0, 0, 1, 2);
-    grid->attach(*b_finishPay, 1, 1, 1, 1);
-    grid->attach(*b_newCustomer, 1, 2, 1, 1);
-    grid->attach(*entry, 2, 1, 1, 1);
-    grid->attach(*l_finishPay, 0, 1, 1, 1);
-    grid->attach(*keyboard, 0, 2, 1, 1);
+    Gtk::Image* i_newCustomer = Gtk::manage(new Gtk::Image("createaccount.png"));
+    Gtk::Button* b_newCustomer = Gtk::manage(new Gtk::Button());
+    b_newCustomer->set_image(*i_newCustomer);
+    b_newCustomer->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onNewCustomerClick));
+    
+    //*****************//
+    //*WIDGET ASSEMBLY*//
+    //*****************//
+
+    Gtk::Box *vboxInterior = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
+    
+    vboxInterior->pack_start(*l_finishPay, Gtk::PACK_SHRINK, 0);
+    vboxInterior->pack_start(*entry, Gtk::PACK_SHRINK, 0);
+    vboxInterior->pack_start(*b_finishPay, Gtk::PACK_SHRINK, 0);
+    vboxInterior->pack_end(*b_newCustomer, Gtk::PACK_SHRINK, 0);
+    vboxInterior->pack_end(*l_newCustomer, Gtk::PACK_SHRINK, 0);
+
+    Gtk::Grid *grid = Gtk::manage(new Gtk::Grid());
+    Gtk::Box *blank = Gtk::manage(new Gtk::Box());
+    Gtk::Box *blank2 = Gtk::manage(new Gtk::Box());
+    grid->attach(*blank, 0, 0, 1, 1);
+    grid->attach(*blank2, 15, 8, 1, 1);
+    
+    grid->attach(*vboxInterior, 1, 1, 6, 5);
+    grid->attach(*confirmationBox, 9, 1, 6, 5);
+    grid->attach(*keyboard, 3, 12, 10, 3);
+
+    grid->set_row_homogeneous(true);
+    grid->set_column_homogeneous(true);
+
     box->add(*grid);
     mainbox->add(*box);
     mainbox->show_all();
@@ -91,5 +118,5 @@ void Main_Window::onFinishPayClick() {
         }
     }
     // If we get here, then no customer had a matching name.
-    entry->set_text("***CUSTOMER NOT FOUND***");
+    entry->set_text("***THAT NAME DOES NOT MATCH OUR RECORDS***");
 }

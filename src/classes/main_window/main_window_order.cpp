@@ -7,7 +7,7 @@ int position = -1; // 1 is containers, 2 is scoops, 3 is toppings. 0 is main.
 Serving serving;
 Order order;
 
-const double X_PAD = 30.0;
+const double X_PAD = 80.0;
 const double Y_PAD = 20.0;
 
 bool full; // For determining container fullness.
@@ -27,9 +27,13 @@ void Main_Window::orderScreen() {
 
     // Status Bar
     Gtk::Box *status = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL, 0));
-    Gtk::Label *container = Gtk::manage(new Gtk::Label("Container"));
-    Gtk::Label *scoops = Gtk::manage(new Gtk::Label("Scoops"));
-    Gtk::Label *toppings = Gtk::manage(new Gtk::Label("Toppings"));
+    Gtk::Label *container = Gtk::manage(new Gtk::Label());
+    Gtk::Label *scoops = Gtk::manage(new Gtk::Label());
+    Gtk::Label *toppings = Gtk::manage(new Gtk::Label());
+    container->set_markup("<span font='18'>Container</span>");
+    scoops->set_markup("<span font='18'>Scoops</span>");
+    toppings->set_markup("<span font='18'>Toppings</span>");
+
     container->set_padding(X_PAD, Y_PAD);
     scoops->set_padding(X_PAD, Y_PAD);
     toppings->set_padding(X_PAD, Y_PAD);
@@ -59,17 +63,17 @@ void Main_Window::orderScreen() {
             break;
         case 1: // User is selecting containers.
             showContainers();
-            container->set_markup("<span weight='bold'>Container</span>");
+            container->set_markup("<span weight='bold' font='18'>Container</span>");
             i_back = Gtk::manage(new Gtk::Image{"returntostart.png"});
             b_back->set_image(*i_back);
             break;
         case 2: // User is selecting scoops.
             showScoops();
-            scoops->set_markup("<span weight='bold'>Scoops</span>");
+            scoops->set_markup("<span weight='bold' font='18'>Scoops</span>");
             break;
         case 3: // User is selecting toppings.
             showToppings();
-            toppings->set_markup("<span weight='bold'>Toppings</span>");
+            toppings->set_markup("<span weight='bold' font='18'>Toppings</span>");
             i_next = Gtk::manage(new Gtk::Image{"addtoorder.png"});
             b_next->set_image(*i_next);
             gridButtons->attach(*b_finishOrder, 2, 0, 1, 1);
@@ -115,7 +119,8 @@ void Main_Window::showContainers() {
     // Container Style and Size Selection
     selections = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
 
-    Gtk::Label *style = Gtk::manage(new Gtk::Label("Style"));
+    Gtk::Label *style = Gtk::manage(new Gtk::Label());
+    style->set_markup("<span weight='bold' font='20'>Choose a Container</span>");
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
     styleButtons->set_layout(Gtk::BUTTONBOX_START);
     int x = 100000; // Containers start at 100000
@@ -142,7 +147,8 @@ void Main_Window::showScoops() {
     // Container Style and Size Selection
     selections = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
 
-    Gtk::Label *style = Gtk::manage(new Gtk::Label("Flavor"));
+    Gtk::Label *style = Gtk::manage(new Gtk::Label());
+    style->set_markup("<span weight='bold' font='20'>Tap to add a Scoop</span>");
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
     styleButtons->set_layout(Gtk::BUTTONBOX_START);
     int x = 200000; // Scoops start at 200000
@@ -175,7 +181,8 @@ void Main_Window::showToppings() {
     // Container Style and Size Selection
     selections = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
 
-    Gtk::Label *topping = Gtk::manage(new Gtk::Label("Topping"));
+    Gtk::Label *topping = Gtk::manage(new Gtk::Label());
+    topping->set_markup("<span weight='bold' font='20'>Tap to add a Topping</span>");
     Gtk::ButtonBox *toppingButtons = Gtk::manage(new Gtk::ButtonBox());
     toppingButtons->set_layout(Gtk::BUTTONBOX_START);
 
@@ -189,9 +196,10 @@ void Main_Window::showToppings() {
         x++;
     } 
 
-    Gtk::Label *amount = Gtk::manage(new Gtk::Label("Amount"));
+    Gtk::Label *amount = Gtk::manage(new Gtk::Label());
+    amount->set_markup("<span weight='bold' font='20'>Customize Amount</span>");
     Gtk::ButtonBox *amountButtons = Gtk::manage(new Gtk::ButtonBox());
-    amountButtons->set_layout(Gtk::BUTTONBOX_START);
+    //amountButtons->set_layout(Gtk::BUTTONBOX_START);
     Gtk::Button *b_none = Gtk::manage(new Gtk::Button("None"));
     Gtk::Button *b_light = Gtk::manage(new Gtk::Button("Light"));
     Gtk::Button *b_normal = Gtk::manage(new Gtk::Button("Normal"));

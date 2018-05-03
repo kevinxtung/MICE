@@ -1,6 +1,4 @@
 #include "main_window.h"
-#include <thread>
-#include <chrono>
 
 void Main_Window::finishedOrderScreen() {
     clean();
