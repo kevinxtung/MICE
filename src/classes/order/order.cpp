@@ -31,6 +31,7 @@ double Order::getPrice() {
 // Setters
 void Order::setName(std::string name) {m_name = name;}
 void Order::setID(unsigned int ID) {m_ID = ID;}
+void Order::setStatus(std::string status) {m_status = status;}
 void Order::addServing(Serving serving) {m_servings.push_back(serving);}
 void Order::removeServing() {m_servings.pop_back();}
 void Order::recieve() {m_status = "UNFILLED";}

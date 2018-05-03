@@ -1,8 +1,17 @@
-Balance,,0.000000
-ID,,0
+Balance,,2.550000
+ID,,4
 Container,,Waffle Cone,,A waffle cone.,,0.750000,,1.000000,,0,,3
 Container,,Cup,,A wax coated cup.,,0.150000,,0.200000,,0,,4
 Scoop,,Vanilla,,Plain vanilla.,,0.490000,,0.800000,,0
 Scoop,,Mint Chocolate Chip,,Deliciously minty.,,0.550000,,0.800000,,0
 Topping,,Peanuts,,Chopped nuts!,,0.500000,,0.750000,,0,,Normal
 Topping,,Hot Fudge,,Creamy and fattening.,,0.300000,,0.750000,,0,,Normal
+Customer,,SAJIB DATTA,,120-120-1200
+Customer,,KYUENGSO PARK,,222-555-0000
+Server,,DARIN BREZEALE,,123-456-7890,,2,,5.000000
+Manager,,BOB WEEMS,,123-369-9182
+Owner,,GEORGE RICE,,111-111-1111
+Order,,1,,PAID,,SAJIB DATTA,,Serving,,Waffle Cone,,Scoops,,Mint Chocolate Chip,,Toppings,,Hot Fudge,,!FINISH,,
+Order,,2,,UNFILLED,,SAJIB DATTA,,Serving,,Cup,,Scoops,,Vanilla,,Vanilla,,Toppings,,Peanuts,,Hot Fudge,,Serving,,Waffle Cone,,Scoops,,Vanilla,,Toppings,,!FINISH,,
+Order,,3,,FILLED,,KYUENGSO PARK,,Serving,,Waffle Cone,,Scoops,,Vanilla,,Toppings,,Peanuts,,!FINISH,,
+Order,,4,,UNFILLED,,SAJIB DATTA,,Serving,,Cup,,Scoops,,Vanilla,,Toppings,,Hot Fudge,,Serving,,Cup,,Scoops,,Mint Chocolate Chip,,Toppings,,Hot Fudge,,Serving,,Waffle Cone,,Scoops,,Mint Chocolate Chip,,Vanilla,,Mint Chocolate Chip,,Toppings,,Hot Fudge,,!FINISH,,

@@ -6,6 +6,7 @@
 class Server : public Person {
     public:
         Server(std::string name, std::string phone, double salary);
+        Server(std::string name, std::string phone, double salary, int ordersTaken);
         // Setters
         void gainOrder();
         void setSalary(double salary);

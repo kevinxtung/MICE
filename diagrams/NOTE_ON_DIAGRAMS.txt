@@ -1,0 +1,13 @@
+Kevin Tung
+
+Yes, admittedly, these diagrams are not very good.
+
+In the class diagram, the view represents all main_window files. While I do have a controller class, I eventually depreceated it because I was unable to keep everything together in the final sprints.
+
+In the sequence diagram, again, it's not very good.
+
+The UI example in "sophisticatedUI.png" is also an awful representation of what I have now.
+
+
+
+I think the takeaway from this is that I need to draw my diagrams better, but also that ideas change in development much more rapidly than I thought.

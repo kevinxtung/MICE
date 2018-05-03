@@ -21,6 +21,7 @@ class Order {
 		// Setters
 		void setName(std::string name);
 		void setID(unsigned int ID);
+		void setStatus(std::string status);
 		void addServing(Serving serving);
 		void removeServing();
 		void recieve();
