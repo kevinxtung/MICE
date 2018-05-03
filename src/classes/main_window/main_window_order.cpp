@@ -7,15 +7,13 @@ int position = -1; // 1 is containers, 2 is scoops, 3 is toppings. 0 is main.
 Serving serving;
 Order order;
 
-const double X_PAD = 20.0;
+const double X_PAD = 30.0;
 const double Y_PAD = 20.0;
 
 bool full; // For determining container fullness.
 int amount; // For determining topping amount.
 void Main_Window::orderScreen() {
     clean();
-    Gdk::RGBA color;
-    color.set("0,1,0,0");
 
     Gtk::Grid *grid = Gtk::manage(new Gtk::Grid());
 
@@ -24,6 +22,8 @@ void Main_Window::orderScreen() {
     
     // Custom Picture Box
     Gtk::Box *pbox = Gtk::manage(new Gtk::Box());
+    Gtk::Image *i_placeholder = Gtk::manage(new Gtk::Image("placeholder.png"));
+    pbox->add(*i_placeholder);
 
     // Status Bar
     Gtk::Box *status = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL, 0));
@@ -60,7 +60,6 @@ void Main_Window::orderScreen() {
         case 1: // User is selecting containers.
             showContainers();
             container->set_markup("<span weight='bold'>Container</span>");
-            container->override_background_color(color);
             i_back = Gtk::manage(new Gtk::Image{"returntostart.png"});
             b_back->set_image(*i_back);
             break;
@@ -74,6 +73,8 @@ void Main_Window::orderScreen() {
             i_next = Gtk::manage(new Gtk::Image{"addtoorder.png"});
             b_next->set_image(*i_next);
             gridButtons->attach(*b_finishOrder, 2, 0, 1, 1);
+            b_finishOrder->set_sensitive(true);
+            b_finishOrder->set_opacity(1.0);
             break;
     }
     
@@ -85,14 +86,25 @@ void Main_Window::orderScreen() {
     // Grid Packing, done after switch to allow image text changes.
     gridButtons->attach(*b_back, 0, 0, 1, 1);
     gridButtons->attach(*b_next, 1, 0, 1, 1);
+    if (position != 3) {
+        gridButtons->attach(*b_finishOrder, 2, 0, 1, 1);
+        b_finishOrder->set_sensitive(false);
+        b_finishOrder->set_opacity(0.0);
+    }
 
     // Dialog Assembly
     vbox->pack_start(*status, Gtk::PACK_SHRINK, 0);
     vbox->pack_start(*selections, Gtk::PACK_SHRINK, 0);
-    vbox->pack_start(*gridButtons, Gtk::PACK_SHRINK, 0);
+    vbox->pack_end(*gridButtons, Gtk::PACK_SHRINK, 0);
     
-    grid->attach(*pbox, 0, 0, 1, 1);
-    grid->attach(*vbox, 1, 0, 1, 1);
+    grid->set_row_homogeneous(true);
+    grid->set_column_homogeneous(true);
+    Gtk::Box *blank = Gtk::manage(new Gtk::Box());
+    Gtk::Box *blank2 = Gtk::manage(new Gtk::Box());
+    grid->attach(*blank, 0, 0, 1, 1);
+    grid->attach(*pbox, 1, 1, 5, 7);
+    grid->attach(*vbox, 7, 1, 8, 7);
+    grid->attach(*blank2, 15, 8, 1, 1);
     
     box->add(*grid);
     mainbox->add(*box);
@@ -105,6 +117,7 @@ void Main_Window::showContainers() {
 
     Gtk::Label *style = Gtk::manage(new Gtk::Label("Style"));
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
+    styleButtons->set_layout(Gtk::BUTTONBOX_START);
     int x = 100000; // Containers start at 100000
     for (auto i : m_controller->getEmporium().getContainers()) {
         Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button());
@@ -131,6 +144,7 @@ void Main_Window::showScoops() {
 
     Gtk::Label *style = Gtk::manage(new Gtk::Label("Flavor"));
     Gtk::ButtonBox *styleButtons = Gtk::manage(new Gtk::ButtonBox());
+    styleButtons->set_layout(Gtk::BUTTONBOX_START);
     int x = 200000; // Scoops start at 200000
     for (auto i : m_controller->getEmporium().getScoops()) {
         Gtk::Button *b_styleButton = Gtk::manage(new Gtk::Button());
@@ -163,6 +177,8 @@ void Main_Window::showToppings() {
 
     Gtk::Label *topping = Gtk::manage(new Gtk::Label("Topping"));
     Gtk::ButtonBox *toppingButtons = Gtk::manage(new Gtk::ButtonBox());
+    toppingButtons->set_layout(Gtk::BUTTONBOX_START);
+
     int x = 300000; // Toppings start at 300000
     for (auto i : m_controller->getEmporium().getToppings()) {
         Gtk::Button *b_toppingButton = Gtk::manage(new Gtk::Button());
@@ -175,7 +191,7 @@ void Main_Window::showToppings() {
 
     Gtk::Label *amount = Gtk::manage(new Gtk::Label("Amount"));
     Gtk::ButtonBox *amountButtons = Gtk::manage(new Gtk::ButtonBox());
-    
+    amountButtons->set_layout(Gtk::BUTTONBOX_START);
     Gtk::Button *b_none = Gtk::manage(new Gtk::Button("None"));
     Gtk::Button *b_light = Gtk::manage(new Gtk::Button("Light"));
     Gtk::Button *b_normal = Gtk::manage(new Gtk::Button("Normal"));

@@ -148,4 +148,10 @@ Controller::tokenCode Controller::hashToken(std::string token) {
     if (token == "Scoop") return eScoop;
     if (token == "Topping") return eTopping;
     if (token == "ID") return eID;
+    if (token == "Customer") return eCustomer;
+    if (token == "Server") return eServer;
+    if (token == "Manager") return eManager;
+    if (token == "Owner") return eOwner;
+    if (token == "Order") return eOrder;
+    if (token == "Serving") return eServing;
 }
