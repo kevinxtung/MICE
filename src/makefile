@@ -4,8 +4,8 @@ FFLAGS += $(CXX) $(CXXFLAGS) $(SRCFLAGS)
 
 GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
-main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_show_records.o main_window_show_inventory.o main_window_keyboard.o main_window_password.o main_window_finished_order.o main_window_entry.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o
-	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_show_records.o main_window_show_inventory.o main_window_keyboard.o main_window_password.o main_window_finished_order.o main_window_entry.o order.o serving.o dialogs.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o $(GTKFLAGS)
+main: main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_show_records.o main_window_show_inventory.o main_window_keyboard.o main_window_password.o main_window_finished_order.o main_window_entry.o order.o serving.o keyboard.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o
+	$(FFLAGS) -o mice main.o main_window.o main_window_default.o main_window_employee.o main_window_order.o main_window_finalize.o main_window_show_orders.o main_window_show_records.o main_window_show_inventory.o main_window_keyboard.o main_window_password.o main_window_finished_order.o main_window_entry.o order.o serving.o keyboard.o controller.o controller_save.o view.o emporium.o item.o scoop.o container.o topping.o person.o customer.o server.o manager.o owner.o $(GTKFLAGS)
 main.o: main.cpp
 	$(FFLAGS) -c main.cpp $(GTKFLAGS)
 main_window.o: ./classes/main_window/main_window.cpp ./classes/main_window/main_window.h
@@ -41,8 +41,8 @@ order.o: ./classes/order/order.cpp ./classes/order/order.h
 	$(FFLAGS) -c ./classes/order/order.cpp $(GTKFLAGS)
 serving.o: ./classes/serving/serving.cpp ./classes/serving/serving.h
 	$(FFLAGS) -c ./classes/serving/serving.cpp $(GTKFLAGS)
-dialogs.o: ./classes/dialogs/dialogs.cpp ./classes/dialogs/dialogs.h
-	$(FFLAGS) -c ./classes/dialogs/dialogs.cpp $(GTKFLAGS)
+keyboard.o: ./classes/keyboard/keyboard.cpp ./classes/keyboard/keyboard.h
+	$(FFLAGS) -c ./classes/keyboard/keyboard.cpp $(GTKFLAGS)
 controller.o: ./classes/controller/controller.cpp ./classes/controller/controller.h
 	$(FFLAGS) -c ./classes/controller/controller.cpp $(GTKFLAGS)
 controller_save.o: ./classes/controller/controller_save.cpp ./classes/controller/controller.h

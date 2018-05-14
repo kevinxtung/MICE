@@ -9,6 +9,6 @@ void Main_Window::finishedOrderScreen() {
     box->set_center_widget(*l_finished);
     mainbox->add(*box);
     mainbox->show_all();
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     defaultScreen();
 }

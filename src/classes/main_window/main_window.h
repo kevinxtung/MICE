@@ -5,6 +5,7 @@
 #include "classes/controller/controller.h"
 #include "classes/serving/serving.h"
 #include "classes/order/order.h"
+#include "classes/keyboard/keyboard.h"
 #include <string>
 
 extern Gtk::Box* mainbox;
