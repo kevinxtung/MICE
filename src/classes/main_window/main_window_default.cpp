@@ -11,16 +11,13 @@ void Main_Window::defaultScreen() {
     m_isOwner = false;
     m_isManager = false;
     activeEmployee = "";
-//    i_splash = Gtk::manage(new Gtk::Image{"splash.png"});
-  //  box->add(*i_splash);
+
+    i_splash = Gtk::manage(new Gtk::Image{"splash.png"});
 
     i_order = Gtk::manage(new Gtk::Image{"startorderbutton.png"});
     b_order = Gtk::manage(new Gtk::Button());
     b_order->set_image(*i_order);
     b_order->signal_clicked().connect(sigc::mem_fun(*this, &Main_Window::onOrderClick));
-
-//    Gtk::Alignment *align = Gtk::manage(new Gtk::Alignment(0.5, 0.5, 0, 0));
-//    align->add(*b_order);
     
     int x, y, offsetX, offsetY;
     Gtk::Window::get_size(x, y);
@@ -35,8 +32,6 @@ void Main_Window::defaultScreen() {
     grid->attach(*b_order, 1, 1, 1, 1);
 
     box->set_center_widget(*grid);
-
-//    box->set_center_widget(*align);
 
     Gtk::SeparatorToolItem *sep = Gtk::manage(new Gtk::SeparatorToolItem());
     sep->set_expand(true);
