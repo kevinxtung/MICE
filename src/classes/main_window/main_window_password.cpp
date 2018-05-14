@@ -5,7 +5,8 @@
 void Main_Window::passwordScreen() {
     clean();
     entry = Gtk::manage(new Gtk::Entry());
-    keyboardSetup("INT");
+
+    //keyboardSetup("INT");
 
     Gtk::Image* i_back = Gtk::manage(new Gtk::Image{"backbutton.png"});
     Gtk::Button* b_back = Gtk::manage(new Gtk::Button());
@@ -22,8 +23,10 @@ void Main_Window::passwordScreen() {
     Gtk::Grid* grid = Gtk::manage(new Gtk::Grid());
     grid->attach(*b_back, 0, 0, 1, 1);
     grid->attach(*l_label, 1, 1, 1, 1);
-    grid->attach(*entry, 1, 2, 3, 1);
-    grid->attach(*keyboard, 1, 3, 3, 1);
+    grid->attach(*entry, 1, 2, 3, 1);// look into using has_focus?
+    Keyboard keyboard("DIGIT");
+    Gtk::Box* keyboardBox = keyboard.getKeyboard();
+    grid->attach(*keyboardBox, 1, 3, 3, 1);
     grid->attach(*b_clear, 1, 4, 1, 1);
     grid->attach(*b_enter, 3, 4, 1, 1);
 
