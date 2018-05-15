@@ -162,7 +162,7 @@ void Main_Window::getEntryNumber() {
                 std::vector<Order>& orders = m_controller->getEmporium().getOrders();
                 orders[top-1].recieve();
                 orders[top-1].setName(g_name);
-                finishedOrderScreen();
+                finishedOrder();
                 break;
             }
             case 1: {   // Customer, calling from employee's creation

@@ -48,6 +48,7 @@ class Main_Window : public Gtk::Window {
 		void showToppings();
 	void finalizeScreen();
 		void onNewCustomerClick();
+	void finishedOrder();
 	void finishedOrderScreen();
 
 	void entryScreen(std::string prompt, std::string type, int function);

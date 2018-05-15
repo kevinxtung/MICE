@@ -41,7 +41,6 @@ Controller* Main_Window::getController() {return m_controller;}
 // Thread that delays program for specified milliseconds.
 void Main_Window::sleep(int ms) {
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-    defaultScreen();
 }
 
 

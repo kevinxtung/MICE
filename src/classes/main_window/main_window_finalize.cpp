@@ -113,7 +113,7 @@ void Main_Window::onFinishPayClick() {
             std::vector<Order>& orders = m_controller->getEmporium().getOrders();
             orders[top-1].recieve();
             orders[top-1].setName(g_name);
-            finishedOrderScreen();
+            finishedOrder();
             return;
         }
     }
