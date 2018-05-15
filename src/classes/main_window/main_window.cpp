@@ -1,9 +1,9 @@
 #include "main_window.h"
-#include <regex>
 
-//****************//
-//*GUI MANAGEMENT*//
-//****************//
+#include <regex>
+#include <chrono>
+#include <thread>
+#include <time.h>
 
 // Global GUI Elements
 Gtk::Box* mainbox = NULL;
@@ -16,7 +16,7 @@ std::string activeEmployee;
 
 Main_Window::Main_Window(Controller* controller) : m_controller{controller}, m_isOwner{false}, m_isManager{false} {
 
-    // GUI SETUP
+    // Initial GUI Setup
     set_default_size(1366, 768); // 1366x768 Native
     fullscreen();
 
@@ -26,20 +26,23 @@ Main_Window::Main_Window(Controller* controller) : m_controller{controller}, m_i
     box = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
     defaultScreen();
 }
+Main_Window::~Main_Window() { }
 
+// Refreshes the screen by setting the mainbox to a new empty box.
 void Main_Window::clean() {
     mainbox->remove(*box);
     box = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL, 0));
     toolbar = Gtk::manage(new Gtk::Toolbar);
 }
 
-Main_Window::~Main_Window() { }
 
 Controller* Main_Window::getController() {return m_controller;}
 
-//*********//
-//*SCREENS*//
-//*********//
+// Thread that delays program for specified milliseconds.
+void Main_Window::sleep(int ms) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+    defaultScreen();
+}
 
 
 //***********//

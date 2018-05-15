@@ -1,11 +1,12 @@
 #pragma once
 
-#include <gtkmm.h>
 #include "classes/emporium/emporium.h"
 #include "classes/controller/controller.h"
 #include "classes/serving/serving.h"
 #include "classes/order/order.h"
 #include "classes/keyboard/keyboard.h"
+
+#include <gtkmm.h>
 #include <string>
 
 extern Gtk::Box* mainbox;
@@ -146,6 +147,8 @@ class Main_Window : public Gtk::Window {
 		void BKSP();
 
     private:
+		void sleep(int ms);
+
 	Controller* m_controller;
 
 	Gtk::Image* i_splash;
