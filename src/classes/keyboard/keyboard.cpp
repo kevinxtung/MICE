@@ -1,8 +1,14 @@
 #include "keyboard.h"
+#include <iostream>
 
 Keyboard::Keyboard() {
     Gtk::Box* m_keyboard = Gtk::manage(new Gtk::Box());
     m_buffer = "";
+    F();
+    U();
+    C();
+    E();
+    std::cout << m_buffer << std::endl;
 }
 
 Keyboard::Keyboard(std::string style) : Keyboard() {
