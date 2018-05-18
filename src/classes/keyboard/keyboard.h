@@ -10,12 +10,15 @@ class Keyboard {
 		Gtk::Box* generate(std::string style);
 
 		Gtk::Box* getKeyboard();
+		Gtk::Entry* getEntry();
         std::string getBuffer();
+
         void clearBuffer();
 
     private:
 		Gtk::Box* m_keyboard;
-        std::string m_buffer;
+		static Gtk::Entry* m_entry;
+        static std::string m_buffer;
 
         void Q();
 		void W();
