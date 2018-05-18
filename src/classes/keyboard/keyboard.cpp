@@ -1,14 +1,13 @@
 #include "keyboard.h"
-#include <iostream>
+
+// Static Variable Initialization
+std::string Keyboard::m_buffer = "";
+Gtk::Entry* Keyboard::m_entry = NULL;
 
 Keyboard::Keyboard() {
-    Gtk::Box* m_keyboard = Gtk::manage(new Gtk::Box());
+    m_entry = Gtk::manage(new Gtk::Entry());
+    m_keyboard = Gtk::manage(new Gtk::Box());
     m_buffer = "";
-    F();
-    U();
-    C();
-    E();
-    std::cout << m_buffer << std::endl;
 }
 
 Keyboard::Keyboard(std::string style) : Keyboard() {
@@ -16,8 +15,9 @@ Keyboard::Keyboard(std::string style) : Keyboard() {
 }
 
 Gtk::Box* Keyboard::getKeyboard() {return m_keyboard;}
+Gtk::Entry* Keyboard::getEntry() {return m_entry;}
 std::string Keyboard::getBuffer() {return m_buffer;}
-void Keyboard::clearBuffer() {m_buffer = "";}
+void Keyboard::clearBuffer() {m_buffer = ""; m_entry->set_text(m_buffer);}
 
 // Generates a usable keyboard based on the input style.
 /*
@@ -163,6 +163,7 @@ Gtk::Box* Keyboard::generate(std::string style) {
         Gtk::Button* b_8 = Gtk::manage(new Gtk::Button("8"));
         Gtk::Button* b_9 = Gtk::manage(new Gtk::Button("9"));
 
+        //b_0->signal_clicked().connect(sigc::ptr_fun(&i0));
         b_0->signal_clicked().connect(sigc::mem_fun(*this, &Keyboard::i0));
         b_00->signal_clicked().connect(sigc::mem_fun(*this, &Keyboard::i00));
         b_decimal->signal_clicked().connect(sigc::mem_fun(*this, &Keyboard::decimal));
@@ -206,51 +207,51 @@ Gtk::Box* Keyboard::generate(std::string style) {
     }
 }
 
-void Keyboard::Q() {m_buffer += "Q";}
-void Keyboard::W() {m_buffer += "W";}
-void Keyboard::E() {m_buffer += "E";}
-void Keyboard::R() {m_buffer += "R";}
-void Keyboard::T() {m_buffer += "T";}
-void Keyboard::Y() {m_buffer += "Y";}
-void Keyboard::U() {m_buffer += "U";}
-void Keyboard::I() {m_buffer += "I";}
-void Keyboard::O() {m_buffer += "O";}
-void Keyboard::P() {m_buffer += "P";}
+void Keyboard::Q() {m_buffer += "Q"; m_entry->set_text(m_buffer);}
+void Keyboard::W() {m_buffer += "W"; m_entry->set_text(m_buffer);}
+void Keyboard::E() {m_buffer += "E"; m_entry->set_text(m_buffer);}
+void Keyboard::R() {m_buffer += "R"; m_entry->set_text(m_buffer);}
+void Keyboard::T() {m_buffer += "T"; m_entry->set_text(m_buffer);}
+void Keyboard::Y() {m_buffer += "Y"; m_entry->set_text(m_buffer);}
+void Keyboard::U() {m_buffer += "U"; m_entry->set_text(m_buffer);}
+void Keyboard::I() {m_buffer += "I"; m_entry->set_text(m_buffer);}
+void Keyboard::O() {m_buffer += "O"; m_entry->set_text(m_buffer);}
+void Keyboard::P() {m_buffer += "P"; m_entry->set_text(m_buffer);}
 
-void Keyboard::A() {m_buffer += "A";}
-void Keyboard::S() {m_buffer += "S";}
-void Keyboard::D() {m_buffer += "D";}
-void Keyboard::F() {m_buffer += "F";}
-void Keyboard::G() {m_buffer += "G";}
-void Keyboard::H() {m_buffer += "H";}
-void Keyboard::J() {m_buffer += "J";}
-void Keyboard::K() {m_buffer += "K";}
-void Keyboard::L() {m_buffer += "L";}
+void Keyboard::A() {m_buffer += "A"; m_entry->set_text(m_buffer);}
+void Keyboard::S() {m_buffer += "S"; m_entry->set_text(m_buffer);}
+void Keyboard::D() {m_buffer += "D"; m_entry->set_text(m_buffer);}
+void Keyboard::F() {m_buffer += "F"; m_entry->set_text(m_buffer);}
+void Keyboard::G() {m_buffer += "G"; m_entry->set_text(m_buffer);}
+void Keyboard::H() {m_buffer += "H"; m_entry->set_text(m_buffer);}
+void Keyboard::J() {m_buffer += "J"; m_entry->set_text(m_buffer);}
+void Keyboard::K() {m_buffer += "K"; m_entry->set_text(m_buffer);}
+void Keyboard::L() {m_buffer += "L"; m_entry->set_text(m_buffer);}
 
-void Keyboard::Z() {m_buffer += "Z";}
-void Keyboard::X() {m_buffer += "X";}
-void Keyboard::C() {m_buffer += "C";}
-void Keyboard::V() {m_buffer += "V";}
-void Keyboard::B() {m_buffer += "B";}
-void Keyboard::N() {m_buffer += "N";}
-void Keyboard::M() {m_buffer += "M";}
+void Keyboard::Z() {m_buffer += "Z"; m_entry->set_text(m_buffer);}
+void Keyboard::X() {m_buffer += "X"; m_entry->set_text(m_buffer);}
+void Keyboard::C() {m_buffer += "C"; m_entry->set_text(m_buffer);}
+void Keyboard::V() {m_buffer += "V"; m_entry->set_text(m_buffer);}
+void Keyboard::B() {m_buffer += "B"; m_entry->set_text(m_buffer);}
+void Keyboard::N() {m_buffer += "N"; m_entry->set_text(m_buffer);}
+void Keyboard::M() {m_buffer += "M"; m_entry->set_text(m_buffer);}
 
-void Keyboard::space() {m_buffer += " ";}
+void Keyboard::space() {m_buffer += " "; m_entry->set_text(m_buffer);}
 
 
-void Keyboard::i0() {m_buffer += "0";}
-void Keyboard::i00() {m_buffer += "00";}
-void Keyboard::decimal() {m_buffer += ".";}
-void Keyboard::dash() {m_buffer += "-";}
-void Keyboard::i1() {m_buffer += "1";}
-void Keyboard::i2() {m_buffer += "2";}
-void Keyboard::i3() {m_buffer += "3";}
-void Keyboard::i4() {m_buffer += "4";}
-void Keyboard::i5() {m_buffer += "5";}
-void Keyboard::i6() {m_buffer += "6";}
-void Keyboard::i7() {m_buffer += "7";}
-void Keyboard::i8() {m_buffer += "8";}
-void Keyboard::i9() {m_buffer += "9";}
+void Keyboard::i0() {m_buffer += "0"; m_entry->set_text(m_buffer);}
+void Keyboard::i00() {m_buffer += "00"; m_entry->set_text(m_buffer);}
+void Keyboard::decimal() {m_buffer += "."; m_entry->set_text(m_buffer);}
+void Keyboard::dash() {m_buffer += "-"; m_entry->set_text(m_buffer);}
+void Keyboard::i1() {m_buffer += "1"; m_entry->set_text(m_buffer);}
+void Keyboard::i2() {m_buffer += "2"; m_entry->set_text(m_buffer);}
+void Keyboard::i3() {m_buffer += "3"; m_entry->set_text(m_buffer);}
+void Keyboard::i4() {m_buffer += "4"; m_entry->set_text(m_buffer);}
+void Keyboard::i5() {m_buffer += "5"; m_entry->set_text(m_buffer);}
+void Keyboard::i6() {m_buffer += "6"; m_entry->set_text(m_buffer);}
+void Keyboard::i7() {m_buffer += "7"; m_entry->set_text(m_buffer);}
+void Keyboard::i8() {m_buffer += "8"; m_entry->set_text(m_buffer);}
+void Keyboard::i9() {m_buffer += "9"; m_entry->set_text(m_buffer);}
 
 void Keyboard::BKSP() {m_buffer.pop_back();}
 
